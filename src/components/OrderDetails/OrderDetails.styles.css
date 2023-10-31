@@ -5,11 +5,48 @@
     position: absolute;
     top: 0;
     z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .back-arrow {
-    font-size: 2rem;
+    background-image: url('../../assets/images/arrow.png');
+    width: 2rem;
+    height: 2rem;
+    background-size: contain;
     position: absolute;
     top: 0;
     left: 0;
+    margin: 1rem;
+    z-index: 5;
+}
+
+.order-container {
+    width: 85vw;
+    height: fit-content;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 0.2rem;
+}
+
+
+.dish-details {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-bar-text {
+    text-align: center;
+
 }
