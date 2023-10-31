@@ -1,0 +1,15 @@
+.order-details {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+
+.back-arrow {
+    font-size: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
