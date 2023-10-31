@@ -17,17 +17,17 @@ const OrderDetails = (props) => {
                 <div className='dish-details'>
                     <p>שניצלים</p>
                     <p>5</p>
-                    <button>הרשמה</button>
+                    <button className='register-btn'>הרשמה</button>
                 </div>
                 <div className='dish-details'>
                     <p>סלטים</p>
                     <p>4</p>
-                    <button>הרשמה</button>
+                    <button className='register-btn'>הרשמה</button>
                 </div>
                 <div className='dish-details'>
                     <p>עוגיות</p>
                     <p>15</p>
-                    <button>הרשמה</button>
+                    <button className='register-btn'>הרשמה</button>
                 </div>
                 <p>כתובת: {props.adress}</p>
             </div>

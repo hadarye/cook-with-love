@@ -44,9 +44,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 1.2rem;
 }
 
 .order-bar-text {
     text-align: center;
 
+}
+
+.register-btn {
+    font-size: 1.2rem;
+    background-color: white;
+    border: solid 1px rgb(206, 206, 206);
+    padding: 0.5rem;
+    border-radius: 10px;
 }
