@@ -7,7 +7,11 @@ const RegisterPopUp = (props) => {
 
     return (
         <div className='register-popup'>
+            <div className='black-screen'>
+                <div className='popup-container'>
 
+                </div>
+            </div>
         </div>
     )
 }

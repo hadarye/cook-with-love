@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       {/* <img className='app-logo' src={logo}></img> */}
-      <div>
+      <div className='title-container'>
         <h1 className='title'>מבשלות אהבה</h1>
         <h4 className='secondary-title'>בתל מונד</h4>
       </div>
