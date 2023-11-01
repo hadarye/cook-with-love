@@ -4,22 +4,20 @@ import './OrderDetails.styles.css'
 import RegisterPopUp from '../RegisterPopUp/RegisterPopUp.component';
 
 const OrderDetails = (props) => {
-    const [dishesArr, setDishesArr] = useState([{}]);
+    const [dishesArr, setDishesArr] = useState(props.dishes);
     const [isShowPopUp, setIsShowPopUp] = useState(false);
+    const [chosenDish, setChosenDish] = useState({});
     let date = new Date(props.date);
     const dateRef = useRef(` ${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}`);
     const timeRef = useRef(`${date.getHours()}:${String(date.getMinutes()).padStart(2, "0")}`);
 
-    useEffect(() => {
-        if (props.dishes === undefined) {
-            setDishesArr([{}]);
-        } else {
-            setDishesArr(props.dishes);
-        }
-    }, [props.dishes]);
-
-    const ShowPopUp = () => {
+    const ShowPopUp = (dish) => {
+        setChosenDish(dish);
         setIsShowPopUp(true);
+    }
+
+    const HidePopUp = () => {
+        setIsShowPopUp(false);
     }
 
     return (
@@ -31,12 +29,14 @@ const OrderDetails = (props) => {
                     <div key={dish.type} className='dish-details'>
                         <p>{dish.type}</p>
                         <p>{dish.count}</p>
-                        <button onClick={() => ShowPopUp()} className='register-btn'>הרשמה</button>
-                    </div>))}
+                        <button onClick={() => ShowPopUp(dish)} className='register-btn'>הרשמה</button>
+                    </div>
+                ))}
             </div>
             <p>כתובת: {props.adress}</p>
+
             <div className={isShowPopUp ? " " : 'hidden'}>
-                <RegisterPopUp></RegisterPopUp>
+                <RegisterPopUp dishType={chosenDish.type} HidePopUp={HidePopUp}></RegisterPopUp>
             </div>
 
         </div>

@@ -21,7 +21,6 @@
     top: 0;
     left: 0;
     margin: 1rem;
-    z-index: 5;
 }
 
 .order-container {
@@ -56,10 +55,12 @@
 
 .register-btn {
     font-size: 1.2rem;
+    font-family: assistant;
     background-color: white;
-    border: solid 1px rgb(206, 206, 206);
+    border: solid 1px #576C31;
+    color: #576C31;
     padding: 0.5rem;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .order-details-title {

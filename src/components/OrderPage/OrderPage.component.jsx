@@ -65,9 +65,9 @@ const OrderPage = () => {
             {OrderList.map((order) => (
                 <OrderBar key={order.order_id} order={order} orderType={orderNames[order.order_type]} date={order.collecting_date} handleOrderPressed={handleOrderPressed}></OrderBar>
             ))}
-            <div className={showDescription ? "" : "hidden"}>
+            {showDescription ?
                 <OrderDetails orderId={currentOrder.current.order_id} dishes={currentOrder.current.dishes} adress={currentOrder.current.collecting_location} closeDescription={closeDescription} orderType={orderNames[currentOrder.current.order_type]} date={currentOrder.current.collecting_date}></OrderDetails>
-            </div>
+            : null}
         </div>
     )
 }
