@@ -3,6 +3,16 @@
   src: url('./assets/fonts/Assistant-VariableFont_wght.ttf');
 }
 
+@font-face {
+  font-family: narkis-bold;
+  src: url('./assets/fonts/NarkisBlockCon-Bold_MFW.woff');
+}
+
+@font-face {
+  font-family: narkis-thin;
+  src: url('./assets/fonts/NarkisBlockCon-Thin_MFW.woff');
+}
+
 #root {
   max-width: 1280px;
   margin: 0;
@@ -15,7 +25,8 @@ body {
   width: 100vw;
   height: 100vh;
   margin: 0;
-  background-color: rgb(252, 252, 252);
+  background-color: #f9f1f2;
+  overflow: hidden;
 }
 
 .app-logo {
@@ -33,4 +44,19 @@ body {
 .hidden {
   pointer-events: none;
   visibility: hidden;
+}
+
+.title {
+  color: #da627d;
+  font-family: "narkis-bold";
+  font-size: 6rem;
+  margin-bottom: 0;
+}
+
+.secondary-title {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-family: "narkis-thin";
+  color: #576C31;
+  font-size: 3rem;
 }

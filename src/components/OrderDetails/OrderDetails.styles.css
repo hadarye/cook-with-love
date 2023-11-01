@@ -1,7 +1,7 @@
 .order-details {
     width: 100vw;
     height: 100vh;
-    background-color: white;
+    background-color: #f9f1f2;
     position: absolute;
     top: 0;
     z-index: 2;
@@ -26,21 +26,23 @@
 
 .order-container {
     width: 85vw;
-    height: fit-content;
+    max-height: 70vh;
     border-radius: 5px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-content: center;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     padding: 1rem 0.2rem;
+    background-color: #fffeff;
+    overflow-y: auto;
 }
 
 
 .dish-details {
-    width: 80%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -58,4 +60,11 @@
     border: solid 1px rgb(206, 206, 206);
     padding: 0.5rem;
     border-radius: 10px;
+}
+
+.order-details-title {
+    color: #da627d;
+    font-family: "narkis-bold";
+    font-size: 3rem;
+    margin: 0.5rem 0;
 }

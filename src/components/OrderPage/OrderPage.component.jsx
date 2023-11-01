@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './OrderPage.styles.css'
 import OrderBar from '../OrderBar/OrderBar.component'
 import OrderDetails from '../OrderDetails/OrderDetails.component'
@@ -7,51 +7,34 @@ import OrderDetails from '../OrderDetails/OrderDetails.component'
 const OrderPage = () => {
     const [showDescription, setShowDescription] = useState(false);
     const currentOrder = useRef({});
-    const OrderList = [
-        {
-            "manager_name": "Merav",
-            "order_type": "ארוחת שישי קרה לחיל התותחנים",
-            "contact_name": "Tahel",
-            "contact_phone": "123",
-            "collecting_date": "2023-11-11 11:11",
-            "collecting_person_name": "שמחה",
-            "collecting_location": "רחוב השדה, תל מונד",
-            "collecting_person_phone": "456",
-            "total": 40,
-            "total_kosher": 5,
-            "total_vegetarians": 3,
-            "total_vegans": 1
-        },
-        {
-            "manager_name": "Merav",
-            "order_type": "ארוחת שבת קרה לשוטרים",
-            "contact_name": "Tahel",
-            "contact_phone": "123",
-            "collecting_date": "2023-11-04 12:00",
-            "collecting_person_name": "יפה",
-            "collecting_location": "רחוב הירמוך, תל מונד",
-            "collecting_person_phone": "456",
-            "total": 40,
-            "total_kosher": 5,
-            "total_vegetarians": 3,
-            "total_vegans": 1
-        },
-        {
-            "manager_name": "Merav",
-            "order_type": "ארוחת שישי חמה לחיל שיריון",
-            "contact_name": "Tahel",
-            "contact_phone": "123",
-            "collecting_date": "2023-11-05 21:21",
-            "collecting_person_name": "שרונה",
-            "collecting_location": "רחוב אלמוג, תל מונד",
-            "collecting_person_phone": "456",
-            "total": 40,
-            "total_kosher": 5,
-            "total_vegetarians": 3,
-            "total_vegans": 1
-        },
+    const orderNames = {
+        "cakes_and_snacks": "עוגות וחטיפים",
+        "friday_dinner_cold": "ארוחת שישי קרה",
+        "friday_dinner_hot": "ארוחת שישי חמה",
+        "lunch_or_dinner_cold": "ארוחת צהררים / ערב קרה",
+        "lunch_or_dinner_hot": "ארוחת צהריים / ערב חמה",
+        "other": "אחר"
 
-    ]
+    }
+    const [OrderList, setOrderList] = useState([]);
+
+    // const OrderBreakdown = [
+    //     {
+    //         "שניצלים": "5",
+    //         "סלטים": "4",
+    //         "עוגיות": "15"
+    //     },
+    //     {
+    //         "קציצות": "3",
+    //         "פסטות": "14",
+    //         "עוגות": "5"
+    //     },
+    //     {
+    //         "ירקות": "8",
+    //         "פירות": "7",
+    //         "עוגיות": "15"
+    //     }
+    // ]
 
     const handleOrderPressed = (order) => {
         console.log(order);
@@ -63,13 +46,27 @@ const OrderPage = () => {
         setShowDescription(false);
     }
 
+    async function getData () {
+        let accumuletor = []
+        let response  = await fetch("https://8nkv5zptli.execute-api.eu-west-1.amazonaws.com/dev/orders");
+        let result = await response.json();
+        for (let meal of result) {
+            accumuletor.push(meal);
+        }
+        setOrderList(accumuletor);
+    }
+
+    useEffect(() => {
+        getData();
+    }, [])
+
     return (
         <div className='order-page'>
             {OrderList.map((order) => (
-                <OrderBar key={order.order_type} order={order} orderType={order.order_type} date={order.collecting_date} handleOrderPressed={handleOrderPressed}></OrderBar>
+                <OrderBar key={order.order_id} order={order} orderType={orderNames[order.order_type]} date={order.collecting_date} handleOrderPressed={handleOrderPressed}></OrderBar>
             ))}
             <div className={showDescription ? "" : "hidden"}>
-                <OrderDetails adress={currentOrder.current.collecting_location} closeDescription={closeDescription} orderType={currentOrder.current.order_type} date={currentOrder.current.collecting_date}></OrderDetails>
+                <OrderDetails orderId={currentOrder.current.order_id} dishes={currentOrder.current.dishes} adress={currentOrder.current.collecting_location} closeDescription={closeDescription} orderType={orderNames[currentOrder.current.order_type]} date={currentOrder.current.collecting_date}></OrderDetails>
             </div>
         </div>
     )
