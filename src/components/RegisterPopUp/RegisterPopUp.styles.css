@@ -9,8 +9,8 @@
 }
 
 .popup-container {
-    width: 90%;
-    height: 70vh;
+    width: 80%;
+    height: 65vh;
     background-color: #fffeff;
     margin: auto;
     position: relative;
@@ -41,6 +41,14 @@
     align-items: center;
 }
 
+.form-textarea {
+    width: 80%;
+    font-size: 1.2rem;
+    font-family: assistant;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+}
+
 .form-input {
     width: 80%;
     height: 2.5rem;
@@ -51,12 +59,12 @@
     border: 1px solid rgb(0, 0, 0);
 }
 
-.form-input::placeholder {
-    /* color: #576c318d; */
+textarea::placeholder,
+input::placeholder {
     color: #ad838c7e;
 }
 
-.form-input:focus { 
+.form-input:focus {
     border: 1px solid rgb(0, 0, 0);
 }
 
@@ -77,5 +85,38 @@
 
 .number-input {
     font-family: assistant;
+    width: 2rem;
+    height: 2.5rem;
     font-size: 1.2rem;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.popup-btn {
+    position: absolute;
+    bottom: 0;
+    margin: 2rem;
+}
+
+.number-container {
+    text-align: right;
+    width: 100%;
+    display: flex;
+    font-size: 1.2rem;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.number-controls {
+    display: flex;
+    align-items: center;
+    height: min-content;
+    margin-top: 2rem;
+}
+
+.number-controller {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0 0.5rem;
 }

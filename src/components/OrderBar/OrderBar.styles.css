@@ -1,16 +1,16 @@
 .order-bar {
     width: 85vw;
-    display: flex;
+    display: grid;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+    text-align: right;
+    grid-template-columns: 2.5fr 1fr 1fr;
+    justify-items: stretch;
     /* border: solid 0.5px #abba7c9f; */
     border-radius: 5px;
     margin: 1rem auto;
     padding: 1rem;
     font-size: 1.2rem;
-    background-color: #fffeff;;
+    background-color: #fffeff;
 }
 
 .order-bar-text {
