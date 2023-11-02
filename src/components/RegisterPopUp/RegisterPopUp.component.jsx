@@ -28,13 +28,12 @@ const RegisterPopUp = (props) => {
                         <div className='number-container'>
                             מספר המנות שתכיני:
                             <div className='number-controls'>
-                                <img src={add} className='number-controller' onClick={() => setNumInputValue(numInputValue + 1)}/>
-                                <input className='number-input' type="number" step="1" value={numInputValue} min="1" max="100" />
-                                <img  onClick={() => setNumInputValue(numInputValue - 1)} src={subtract} className='number-controller'/>
+                                <img src={add} className='number-controller' onClick={() => {numInputValue < props.availableCount ? setNumInputValue(numInputValue + 1) : null}}/>
+                                <input className='number-input' step="1" readOnly value={numInputValue} min="1" max="100" />
+                                <img  onClick={() => {numInputValue > 1 ? setNumInputValue(numInputValue - 1) : null}} src={subtract} className='number-controller'/>
                             </div>
                         </div>
-
-                        <button className='register-btn popup-btn'>הרשמה</button>
+                        <button type="button" className='register-btn popup-btn'>הרשמה</button>
                     </form>
                 </div>
             </div>

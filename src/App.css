@@ -24,7 +24,7 @@
 
 body {
   width: 100vw;
-  height: 90vh;
+  height: calc(100vh - 55px);
   margin: 0;
   background-color: #f9f1f2;
   overflow: hidden;

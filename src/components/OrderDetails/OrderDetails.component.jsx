@@ -44,7 +44,7 @@ const OrderDetails = (props) => {
             <p>כתובת: {props.adress}</p>
 
             <div className={isShowPopUp ? " " : 'hidden'}>
-                <RegisterPopUp dishType={chosenDish.type} HidePopUp={HidePopUp}></RegisterPopUp>
+                <RegisterPopUp availableCount={chosenDish.available} dishType={chosenDish.type} HidePopUp={HidePopUp}></RegisterPopUp>
             </div>
 
         </div>

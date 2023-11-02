@@ -1,6 +1,6 @@
 .black-screen {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.602);
     position: absolute;
     top: 0;
@@ -94,7 +94,7 @@ input::placeholder {
 }
 
 .popup-btn {
-    margin: 2rem;
+    margin: 2rem 0 3rem 0;
 }
 
 .number-container {
