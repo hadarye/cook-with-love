@@ -79,6 +79,7 @@ input::placeholder {
 
 .pop-up-title {
     margin-top: 3rem !important;
+    margin-bottom: 1rem;
     line-height: 2.5rem;
     font-size: 2.5rem;
 }
@@ -94,7 +95,7 @@ input::placeholder {
 }
 
 .popup-btn {
-    margin: 2rem 0 3rem 0;
+    margin: 1rem 0 3rem 0;
 }
 
 .number-container {

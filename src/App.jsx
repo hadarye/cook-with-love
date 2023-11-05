@@ -3,8 +3,24 @@ import './App.css';
 import logo from '/cook-with-love-logo.JPG?url';
 import OrderPage from './components/OrderPage/OrderPage.component';
 import Management from './components/Management/Management.component';
+import { useState, useEffect } from "react";
 
-function App() {
+const App = () => {
+  const [trail, setTrail] = useState();
+
+  useEffect(() => {
+    // getData(); 
+  })
+
+  // async function getData() {
+  //   let accumuletor = []
+  //   let response = await fetch("https://8nkv5zptli.execute-api.eu-west-1.amazonaws.com/dev/dishes/register");
+  //   let result = await response.json();
+  //   for (let meal of result) {
+  //     accumuletor.push(meal);
+  //   }
+  //   setTrail(accumuletor);
+  // }
 
   return (
     <>
@@ -15,8 +31,8 @@ function App() {
       </div>
 
       <Routes>
-          <Route path="/cook-with-love" element={<OrderPage/>}/>
-          <Route path="/cook-with-love/management" element={<Management></Management>}></Route>
+        <Route path="/cook-with-love" element={<OrderPage />} />
+        <Route path="/cook-with-love/management" element={<Management></Management>}></Route>
 
       </Routes>
 

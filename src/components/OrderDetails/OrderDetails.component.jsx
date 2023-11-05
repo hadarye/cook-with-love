@@ -25,6 +25,11 @@ const OrderDetails = (props) => {
         <div className='order-details'>
             <div onClick={() => props.closeDescription()} className='back-arrow'></div>
             <h2 className='order-details-title'>{props.orderType}</h2>
+            <div className='order-details-subtitle'>
+                <p className='subtitle-text'>{`${dateRef.current} ${timeRef.current}`}</p>
+                <p className='subtitle-text'>כתובת: {props.adress}</p>
+            </div>
+
             <div className='details-container'>
                 <div className='details-top-bar'>
                     <div>מנה</div>
@@ -34,7 +39,7 @@ const OrderDetails = (props) => {
                 <div className='order-container'>
                     {dishesArr.map((dish) => (
                         <div key={dish.type} className='dish-details'>
-                            <p style={{paddingLeft: "1.5rem"}}>{dish.type}</p>
+                            <p style={{ paddingLeft: "1.5rem" }}>{dish.type}</p>
                             <p>{dish.total_missing}</p>
                             <p>{dish.kosher_missing}</p>
                             <button onClick={() => ShowPopUp(dish)} className='register-btn'>הרשמה</button>
@@ -43,10 +48,10 @@ const OrderDetails = (props) => {
                 </div>
             </div>
 
-            <p>כתובת: {props.adress}</p>
+
 
             <div className={isShowPopUp ? " " : 'hidden'}>
-                <RegisterPopUp availableCount={chosenDish.total_missing} dishType={chosenDish.type} HidePopUp={HidePopUp}></RegisterPopUp>
+                <RegisterPopUp availableCount={chosenDish.total_missing} dishType={chosenDish.type} HidePopUp={HidePopUp} order_Id={props.orderId}></RegisterPopUp>
             </div>
 
         </div>

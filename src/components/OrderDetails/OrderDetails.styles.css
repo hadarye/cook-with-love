@@ -12,6 +12,12 @@
     align-items: center;
 }
 
+.order-details-subtitle {
+    font-size: 1.2rem;
+    width: 80%;
+    margin: 0;
+}
+
 .back-arrow {
     background-image: url('../../assets/images/arrow.png');
     width: 2rem;
@@ -86,5 +92,10 @@
     color: #da627d;
     font-family: "narkis-bold";
     font-size: 3rem;
-    margin: 0.5rem 0;
+    line-height: 3rem;
+    margin: 0;
+}
+
+.subtitle-text {
+    margin: 0;
 }
