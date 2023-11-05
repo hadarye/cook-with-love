@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { React, useEffect, useRef, useState } from 'react'
 import './OrderPage.styles.css'
 import OrderBar from '../OrderBar/OrderBar.component'
 import OrderDetails from '../OrderDetails/OrderDetails.component'

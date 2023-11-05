@@ -28,13 +28,15 @@ const OrderDetails = (props) => {
             <div className='details-container'>
                 <div className='details-top-bar'>
                     <div>מנה</div>
-                    <div>כמות</div>
+                    <div>הכל</div>
+                    <div>כשרות</div>
                 </div>
                 <div className='order-container'>
                     {dishesArr.map((dish) => (
                         <div key={dish.type} className='dish-details'>
-                            <p>{dish.type}</p>
-                            <p>{dish.count}</p>
+                            <p style={{paddingLeft: "1.5rem"}}>{dish.type}</p>
+                            <p>{dish.total_missing}</p>
+                            <p>{dish.kosher_missing}</p>
                             <button onClick={() => ShowPopUp(dish)} className='register-btn'>הרשמה</button>
                         </div>
                     ))}
@@ -44,7 +46,7 @@ const OrderDetails = (props) => {
             <p>כתובת: {props.adress}</p>
 
             <div className={isShowPopUp ? " " : 'hidden'}>
-                <RegisterPopUp availableCount={chosenDish.available} dishType={chosenDish.type} HidePopUp={HidePopUp}></RegisterPopUp>
+                <RegisterPopUp availableCount={chosenDish.total_missing} dishType={chosenDish.type} HidePopUp={HidePopUp}></RegisterPopUp>
             </div>
 
         </div>
