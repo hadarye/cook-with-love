@@ -1,6 +1,6 @@
 .order-details {
     width: 100vw;
-    height: calc(100vh - 55px);
+    height: calc(100vh - 100px);
     background-color: #f9f1f2;
     position: absolute;
     top: 0;

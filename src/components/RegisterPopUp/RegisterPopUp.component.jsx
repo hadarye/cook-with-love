@@ -53,11 +53,11 @@ const RegisterPopUp = (props) => {
                         <h2 className='order-details-title pop-up-title'>{props.dishType}</h2>
                         <div className='input-container'>
                             שם מלא
-                            <input ref={nameRef} className='form-input' placeholder='הכניסי את שמך'></input>
+                            <input ref={nameRef} required className='form-input' placeholder='הכניסי את שמך'></input>
                         </div>
                         <div className='input-container'>
                             מס׳ טלפון
-                            <input ref={phoneRef} className='form-input' placeholder='הכניסי את מס׳ הטלפון'></input>
+                            <input ref={phoneRef} required className='form-input' placeholder='הכניסי את מס׳ הטלפון'></input>
                         </div>
                         <div className='input-container'>
                             מה תכיני?

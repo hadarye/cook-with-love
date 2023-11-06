@@ -2,23 +2,31 @@
 import { useEffect, useRef, useState } from 'react'
 import './OrderDetails.styles.css'
 import RegisterPopUp from '../RegisterPopUp/RegisterPopUp.component';
+import InfoPopUp from '../InfoPopUp/InfoPopUp.component';
 
 const OrderDetails = (props) => {
     const [dishesArr, setDishesArr] = useState(props.dishes);
-    const [isShowPopUp, setIsShowPopUp] = useState(false);
+    const [isShowRegisterPopUp, setIsShowRegisterPopUp] = useState(false);
+    const [isShowInfoPopUp, setIsShowInfoPopUp] = useState(false);
     const [chosenDish, setChosenDish] = useState({});
 
     let date = new Date(props.date);
     const dateRef = useRef(` ${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}`);
     const timeRef = useRef(`${date.getHours()}:${String(date.getMinutes()).padStart(2, "0")}`);
 
-    const ShowPopUp = (dish) => {
+    const ShowRegisterPopUp = (dish) => {
         setChosenDish(dish);
-        setIsShowPopUp(true);
+        setIsShowRegisterPopUp(true);
     }
 
     const HidePopUp = () => {
-        setIsShowPopUp(false);
+        setIsShowRegisterPopUp(false);
+        setIsShowInfoPopUp(false);
+    }
+
+    const ShowInfoPopUp = (dish) => {
+        setChosenDish(dish);
+        setIsShowInfoPopUp(true);
     }
 
     return (
@@ -42,16 +50,17 @@ const OrderDetails = (props) => {
                             <p style={{ paddingLeft: "1.5rem" }}>{dish.type}</p>
                             <p>{dish.total_missing}</p>
                             <p>{dish.kosher_missing}</p>
-                            <button onClick={() => ShowPopUp(dish)} className='register-btn'>הרשמה</button>
+                            {!props.isManager ? <button onClick={() => ShowRegisterPopUp(dish)} className='register-btn'>הרשמה</button> : null}
+                            {props.isManager ? <button onClick={() => ShowInfoPopUp(dish)} className='register-btn'>פרטים</button> : null}
                         </div>
                     ))}
                 </div>
             </div>
-
-
-
-            <div className={isShowPopUp ? " " : 'hidden'}>
+            <div className={isShowRegisterPopUp ? " " : 'hidden'}>
                 <RegisterPopUp availableCount={chosenDish.total_missing} dishType={chosenDish.type} HidePopUp={HidePopUp} order_Id={props.orderId}></RegisterPopUp>
+            </div>
+            <div className={isShowInfoPopUp ? "" : "hidden"}>
+                <InfoPopUp dish={chosenDish} HidePopUp={HidePopUp}/>
             </div>
 
         </div>

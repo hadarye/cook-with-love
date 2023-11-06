@@ -6,3 +6,4 @@ export default defineConfig({
   plugins: [react()],
   base: "https://hadarye.github.io/cook-with-love/"
 })
+
