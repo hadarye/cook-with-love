@@ -28,6 +28,9 @@ body {
   margin: 0;
   background-color: #f9f1f2;
   overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .app-logo {

@@ -28,17 +28,27 @@ const RegisterPopUp = (props) => {
             "method": "POST",
             body: JSON.stringify(objRegistration),
         });
-        console.log('post completed')
+        console.log('post completed');
+        clearForm();
         const result = await response.json()
         console.log(result);
         console.warn('refresh')
+    }
+
+    const clearForm = () => {
+        nameRef.current.value = "";
+        phoneRef.current.value = "";
+        typeRef.current.value = "";
+        isKosherRef.current = false;
+        setNumInputValue(1);
+        props.HidePopUp();
     }
 
     return (
         <>
             <div className='black-screen'>
                 <div className='popup-container'>
-                    <div onClick={() => { setNumInputValue(1); props.HidePopUp() }} className='close-btn'></div>
+                    <div onClick={() => clearForm() } className='close-btn'></div>
                     <form className='form-container' onSubmit={formSubmit}>
                         <h2 className='order-details-title pop-up-title'>{props.dishType}</h2>
                         <div className='input-container'>
@@ -56,9 +66,9 @@ const RegisterPopUp = (props) => {
                         <div className='number-container'>
                             מספר המנות שתכיני:
                             <div className='number-controls'>
-                                <img src={add} className='number-controller' onClick={() => { numInputValue < props.availableCount ? setNumInputValue(numInputValue + 1) : null }} />
+                                <img src={add}  className={numInputValue < props.availableCount ? 'number-controller' : 'number-controller gray'} onClick={() => { numInputValue < props.availableCount ? setNumInputValue(numInputValue + 1) : null }} />
                                 <input className='number-input' step="1" readOnly value={numInputValue} min="1" max="100" />
-                                <img onClick={() => { numInputValue > 1 ? setNumInputValue(numInputValue - 1) : null }} src={subtract} className='number-controller' />
+                                <img onClick={() => { numInputValue > 1 ? setNumInputValue(numInputValue - 1) : null }} src={subtract} className={numInputValue > 1 ? 'number-controller' : 'number-controller gray'} />
                             </div>
                         </div>
                         <div className='checkbox-container'>

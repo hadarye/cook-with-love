@@ -141,3 +141,7 @@ input::placeholder {
     accent-color: #da627d;
     border-radius: 5px;
 }
+
+.gray {
+    filter: grayscale(0.8);
+}

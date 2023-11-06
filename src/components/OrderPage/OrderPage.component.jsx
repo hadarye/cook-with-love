@@ -4,7 +4,7 @@ import OrderBar from '../OrderBar/OrderBar.component'
 import OrderDetails from '../OrderDetails/OrderDetails.component'
 
 
-const OrderPage = () => {
+const OrderPage = (props) => {
     const [showDescription, setShowDescription] = useState(false);
     const currentOrder = useRef({});
     const orderNames = {
@@ -14,27 +14,7 @@ const OrderPage = () => {
         "lunch_or_dinner_cold": "ארוחת צהררים / ערב קרה",
         "lunch_or_dinner_hot": "ארוחת צהריים / ערב חמה",
         "other": "אחר"
-
     }
-    const [OrderList, setOrderList] = useState([]);
-
-    // const OrderBreakdown = [
-    //     {
-    //         "שניצלים": "5",
-    //         "סלטים": "4",
-    //         "עוגיות": "15"
-    //     },
-    //     {
-    //         "קציצות": "3",
-    //         "פסטות": "14",
-    //         "עוגות": "5"
-    //     },
-    //     {
-    //         "ירקות": "8",
-    //         "פירות": "7",
-    //         "עוגיות": "15"
-    //     }
-    // ]
 
     const handleOrderPressed = (order) => {
         console.log(order);
@@ -46,23 +26,10 @@ const OrderPage = () => {
         setShowDescription(false);
     }
 
-    async function getData () {
-        let accumuletor = []
-        let response  = await fetch("https://8nkv5zptli.execute-api.eu-west-1.amazonaws.com/dev/orders");
-        let result = await response.json();
-        for (let meal of result) {
-            accumuletor.push(meal);
-        }
-        setOrderList(accumuletor);
-    }
-
-    useEffect(() => {
-        getData();
-    }, [])
 
     return (
         <div className='order-page'>
-            {OrderList.map((order) => (
+            {props.OrderList.map((order) => (
                 <OrderBar key={order.order_id} order={order} orderType={orderNames[order.order_type]} date={order.collecting_date} handleOrderPressed={handleOrderPressed}></OrderBar>
             ))}
             {showDescription ?
