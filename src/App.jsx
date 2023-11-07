@@ -46,8 +46,8 @@ const App = () => {
         <h4 className='secondary-title'>בתל מונד</h4>
       </div>
       <Routes>
-        <Route path="/cook-with-love" element={<OrderPage OrderList={OrderList} isManager={false} />} />
-        <Route path="/cook-with-love/management" element={<OrderPage OrderList={OrderList} isManager={true} />}></Route>
+        <Route path="/" element={<OrderPage OrderList={OrderList} isManager={false} />} />
+        <Route path="/management" element={<OrderPage OrderList={OrderList} isManager={true} />}></Route>
 
       </Routes>
 
