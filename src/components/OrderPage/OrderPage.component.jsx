@@ -3,6 +3,7 @@ import './OrderPage.styles.css'
 import OrderBar from '../OrderBar/OrderBar.component'
 import OrderDetails from '../OrderDetails/OrderDetails.component'
 import AddFormBtn from '../../assets/images/add-form.png'
+import FilterBar from '../FilterBar/FilterBar.component'
 
 
 const OrderPage = (props) => {
@@ -30,6 +31,11 @@ const OrderPage = (props) => {
 
     return (
         <div className='order-page'>
+            <FilterBar/>
+            <div className='title-container'>
+                <h1 className='title'>מבשלות אהבה</h1>
+                <h4 className='secondary-title'>בתל מונד</h4>
+            </div>
             <div className='order-bar-container'>
                 {props.OrderList.map((order) => (
                     <OrderBar key={order.order_id} order={order} orderType={orderNames[order.order_type]} date={order.collecting_date} handleOrderPressed={handleOrderPressed}></OrderBar>

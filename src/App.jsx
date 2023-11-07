@@ -1,7 +1,6 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import './App.css';
 import logo from '/cook-with-love-logo.JPG?url';
-import FilterBar from './components/FilterBar/FilterBar.component';
 import OrderPage from './components/OrderPage/OrderPage.component';
 import Management from './components/Management/Management.component';
 import { useState, useEffect } from "react";
@@ -39,13 +38,9 @@ const App = () => {
 
   return (
     <>
-      <FilterBar />
 
       {/* <img className='app-logo' src={logo}></img> */}
-      <div className='title-container'>
-        <h1 className='title'>מבשלות אהבה</h1>
-        <h4 className='secondary-title'>בתל מונד</h4>
-      </div>
+
       <Routes>
         <Route path="/" element={<OrderPage OrderList={OrderList} isManager={false} />} />
         <Route path="/management" element={<OrderPage OrderList={OrderList} isManager={true} />}></Route>
