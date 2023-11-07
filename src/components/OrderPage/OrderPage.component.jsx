@@ -4,10 +4,12 @@ import OrderBar from '../OrderBar/OrderBar.component'
 import OrderDetails from '../OrderDetails/OrderDetails.component'
 import AddFormBtn from '../../assets/images/add-form.png'
 import FilterBar from '../FilterBar/FilterBar.component'
+import NewOrderForm from '../NewOrderForm/NewOrderForm.component'
 
 
 const OrderPage = (props) => {
     const [showDescription, setShowDescription] = useState(false);
+    const [newOrder, setNewOrder] = useState(false);
     const currentOrder = useRef({});
     const orderNames = {
         "cakes_and_snacks": "עוגות וחטיפים",
@@ -28,10 +30,14 @@ const OrderPage = (props) => {
         setShowDescription(false);
     }
 
+    const closeNewOrder = () => {
+        setNewOrder(false);
+    }
+
 
     return (
         <div className='order-page'>
-            <FilterBar/>
+            <FilterBar />
             <div className='title-container'>
                 <h1 className='title'>מבשלות אהבה</h1>
                 <h4 className='secondary-title'>בתל מונד</h4>
@@ -45,7 +51,10 @@ const OrderPage = (props) => {
                 <OrderDetails isManager={props.isManager} orderId={currentOrder.current.order_id} dishes={currentOrder.current.dishes} adress={currentOrder.current.collecting_location} closeDescription={closeDescription} orderType={orderNames[currentOrder.current.order_type]} date={currentOrder.current.collecting_date}></OrderDetails>
                 : null}
             {props.isManager ?
-                <img src={AddFormBtn} className='add-form-btn' />
+                <img src={AddFormBtn} className='add-form-btn' onClick={() => setNewOrder(true)}/>
+                : null}
+            {newOrder ?
+                <NewOrderForm closeNewOrder={closeNewOrder}></NewOrderForm>
                 : null}
         </div>
     )
