@@ -2,6 +2,7 @@ import { React, useEffect, useRef, useState } from 'react'
 import './OrderPage.styles.css'
 import OrderBar from '../OrderBar/OrderBar.component'
 import OrderDetails from '../OrderDetails/OrderDetails.component'
+import AddFormBtn from '../../assets/images/add-form.png'
 
 
 const OrderPage = (props) => {
@@ -29,12 +30,17 @@ const OrderPage = (props) => {
 
     return (
         <div className='order-page'>
-            {props.OrderList.map((order) => (
-                <OrderBar key={order.order_id} order={order} orderType={orderNames[order.order_type]} date={order.collecting_date} handleOrderPressed={handleOrderPressed}></OrderBar>
-            ))}
+            <div className='order-bar-container'>
+                {props.OrderList.map((order) => (
+                    <OrderBar key={order.order_id} order={order} orderType={orderNames[order.order_type]} date={order.collecting_date} handleOrderPressed={handleOrderPressed}></OrderBar>
+                ))}
+            </div>
             {showDescription ?
                 <OrderDetails isManager={props.isManager} orderId={currentOrder.current.order_id} dishes={currentOrder.current.dishes} adress={currentOrder.current.collecting_location} closeDescription={closeDescription} orderType={orderNames[currentOrder.current.order_type]} date={currentOrder.current.collecting_date}></OrderDetails>
-            : null}
+                : null}
+            {props.isManager ?
+                <img src={AddFormBtn} className='add-form-btn' />
+                : null}
         </div>
     )
 }

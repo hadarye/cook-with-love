@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import './App.css';
 import logo from '/cook-with-love-logo.JPG?url';
 import FilterBar from './components/FilterBar/FilterBar.component';
@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 const App = () => {
   const [trail, setTrail] = useState();
   const [OrderList, setOrderList] = useState([]);
+  const navigate = useNavigate();
 
   async function getData() {
     let accumuletor = []
@@ -50,7 +51,8 @@ const App = () => {
         <Route path="/management" element={<OrderPage OrderList={OrderList} isManager={true} />}></Route>
 
       </Routes>
-
+      <button onClick={() => navigate('/management')}>management</button>
+      <button onClick={() => navigate('/')}>home</button>
     </>
   )
 }

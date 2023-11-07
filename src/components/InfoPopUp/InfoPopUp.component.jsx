@@ -42,16 +42,17 @@ const InfoPopUp = (props) => {
                 <h2 className='order-details-title pop-up-title'>{props.dish.type}</h2>
                 {filteredBakersArr === undefined ? null : filteredBakersArr.map((baker) => (
                     <div key={baker.dish_type} className='baker-info'>
+                        <p className='baker-info-number'>{typeof (baker.counter) === "number" ? baker.counter : 1}</p>
                         <div>
                             <p className='baker-info-text'>{baker.name}</p>
                             <p className='baker-info-text'>{baker.phone}</p>
                             <p className='baker-info-text'>{baker.dish_type}</p>
                         </div>
-                        <p className='baker-info-text'>{baker.kosher ? "כשר" : "לא כשר"}</p>
+                        <p className='baker-info-kosher'>{baker.kosher ? "כשר" : "לא כשר"}</p>
                     </div>
                 ))}
                 {filteredBakersArr.length === 0 ?
-                    <div className='baker-info-text'>אין נרשמים להזמנה זו.</div>
+                    <div className='baker-info-text' style={{marginRight: "2rem"}}>אין נרשמים להזמנה זו.</div>
                     : null}
             </div>
         </div>
