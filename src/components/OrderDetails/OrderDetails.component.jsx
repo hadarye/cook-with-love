@@ -33,10 +33,7 @@ const OrderDetails = (props) => {
         <div className='order-details'>
             <div onClick={() => props.closeDescription()} className='back-arrow'></div>
             <h2 className='order-details-title'>{props.orderType}</h2>
-            <div className='order-details-subtitle'>
-                <p className='subtitle-text'>{`${dateRef.current} ${timeRef.current}`}</p>
-                <p className='subtitle-text'>כתובת: {props.adress}</p>
-            </div>
+
 
             <div className='details-container'>
                 <div className='details-top-bar'>
@@ -56,11 +53,15 @@ const OrderDetails = (props) => {
                     ))}
                 </div>
             </div>
+            <div className='order-details-subtitle'>
+                <p className='subtitle-text'>{`${dateRef.current} ${timeRef.current}`}</p>
+                <p className='subtitle-text'>כתובת: {props.adress}</p>
+            </div>
             <div className={isShowRegisterPopUp ? " " : 'hidden'}>
                 <RegisterPopUp availableCount={chosenDish.total_missing} dishType={chosenDish.type} HidePopUp={HidePopUp} order_Id={props.orderId}></RegisterPopUp>
             </div>
             <div className={isShowInfoPopUp ? "" : "hidden"}>
-                <InfoPopUp dish={chosenDish} HidePopUp={HidePopUp}/>
+                <InfoPopUp dish={chosenDish} HidePopUp={HidePopUp} />
             </div>
 
         </div>

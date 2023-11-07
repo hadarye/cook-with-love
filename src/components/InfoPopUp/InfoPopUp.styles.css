@@ -1,7 +1,7 @@
 .baker-info-text {
     font-size: 1.2rem;
     margin: 0.2rem 2rem;
-
+    text-align: right;
 }
 
 .baker-info {
@@ -11,4 +11,10 @@
     align-content: center;
     align-items: center;
     justify-content: space-between;
+}
+
+.info-popup {
+    padding-bottom: 3rem;
+    max-height: 70%;
+    overflow: auto;
 }
