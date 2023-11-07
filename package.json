@@ -2,6 +2,7 @@
   "name": "cook-with-love",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://hadarye.github.io/cook-with-love/",
   "type": "module",
   "scripts": {
     "dev": "vite",
