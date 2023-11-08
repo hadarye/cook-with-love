@@ -8,7 +8,7 @@ const Management = (props) => {
         "cakes_and_snacks": "עוגות וחטיפים",
         "friday_dinner_cold": "ארוחת שישי קרה",
         "friday_dinner_hot": "ארוחת שישי חמה",
-        "lunch_or_dinner_cold": "ארוחת צהררים / ערב קרה",
+        "lunch_or_dinner_cold": "ארוחת צהריים / ערב קרה",
         "lunch_or_dinner_hot": "ארוחת צהריים / ערב חמה",
         "other": "אחר"
 

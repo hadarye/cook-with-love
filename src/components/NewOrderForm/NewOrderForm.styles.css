@@ -10,4 +10,53 @@
     align-content: center;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+}
+
+.new-order-form {
+    width: 100%;
+}
+
+.form-inputs {
+    width: 100%;
+    margin: 0;
+    height: 30rem;
+    overflow-y: auto;
+    margin: 1rem 0;
+}
+
+.new-order-form input[type=text],
+.new-order-form input[type=datetime-local]
+ {
+    width: 80%;
+    font-size: 1.2rem;
+    font-family: assistant;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+}
+
+.new-order-form input[type=radio] {
+    accent-color: #da627d;
+    width: 1rem;
+    height: 1rem;
+}
+
+.new-order-form input[type=number] {
+    font-size: 1.2rem;
+    font-family: assistant;
+    width: 4rem;
+    margin: 0 1rem;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+}
+
+.new-order-form label {
+    line-height: 1rem;
+}
+
+.order-inputs-container {
+    width: 90%;
+    text-align: right;
+    font-size: 1.2rem;
+    margin: 1rem;
 }
