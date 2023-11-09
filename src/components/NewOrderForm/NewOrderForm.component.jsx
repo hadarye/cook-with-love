@@ -1,5 +1,5 @@
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './NewOrderForm.styles.css'
 
 const NewOrderForm = (props) => {
@@ -11,26 +11,65 @@ const NewOrderForm = (props) => {
         "lunch_or_dinner_hot": "ארוחת צהריים / ערב חמה",
         "other": "אחר"
     });
+    const manager_name_ref = useRef("");
+    const order_name_ref = useRef("");
+    const [orderType, setOrderType] = useState("");
+    const contact_name_ref = useRef("");
+    const contact_phone_ref = useRef("");
+    const isKosherRef = useRef(false);
 
+    const formSubmit = async (e) => {
+        e.preventDefault();
+        const url = 'https://8nkv5zptli.execute-api.eu-west-1.amazonaws.com/dev/dishes/register';
+        const objRegistration = {
+            "order_id": String(props.order_Id),
+            "baker_name": String(nameRef.current.value),
+            "dish_type": String(props.dishType),
+            "baker_phone": String(phoneRef.current.value),
+            "baker_dish_type": String(typeRef.current.value),
+            "baker_kosher": Boolean(isKosherRef.current),
+            "number_of_dishes": Number(numInputValue)
+        }
+        console.log('registrasion ', objRegistration)
+        const response = await fetch(url, {
+            "method": "POST",
+            body: JSON.stringify(objRegistration),
+        });
+        console.log('post completed');
+        clearForm();
+        const result = await response.json()
+        console.log(result);
+        console.warn('refresh')
+    }
+
+    const clearForm = () => {
+        nameRef.current.value = "";
+        phoneRef.current.value = "";
+        typeRef.current.value = "";
+        isKosherRef.current = false;
+        setNumInputValue(1);
+        props.HidePopUp();
+    }
+ 
     return (
         <div className='new-order'>
             <div onClick={() => props.closeNewOrder()} className='back-arrow'></div>
             <h2 className='order-details-title'>הזמנה חדשה</h2>
-            <form className='new-order-form'>
+            <form className='new-order-form' onSubmit={formSubmit}>
                 <div className='form-inputs'>
                     <div className='order-inputs-container'>
                         שם המנהלת:
-                        <input type='text' name='manager_name' placeholder='שם המנהלת'></input>
+                        <input ref={manager_name_ref} type='text' name='manager_name' placeholder='שם המנהלת'></input>
                     </div>
                     <div className='order-inputs-container'>
                         שם ההזמנה:
-                        <input type='text' name='order_name' placeholder='שם ההזמנה'></input>
+                        <input ref={order_name_ref} type='text' name='order_name' placeholder='שם ההזמנה'></input>
                     </div>
                     <div className='order-inputs-container'>
                         סוג ההזמנה:
                         {Object.keys(orderNamesRef.current).map((key, index) => (
                             <div key={key}>
-                                <input type='radio' name='order_type' id={key} value={key}></input>
+                                <input type='radio' name='order_type' id={key} value={key} onClick={() => setOrderType(key)}></input>
                                 <label htmlFor={key}>{orderNamesRef.current[key]}</label>
                             </div>
 
@@ -38,11 +77,11 @@ const NewOrderForm = (props) => {
                     </div>
                     <div className='order-inputs-container'>
                         שם ליצירת קשר:
-                        <input type='text' name='contact_name' placeholder='שם ליצירת קשר'></input>
+                        <input type='text' name='contact_name' ref={contact_name_ref} placeholder='שם ליצירת קשר'></input>
                     </div>
                     <div className='order-inputs-container'>
                         טלפון ליצירת קשר:
-                        <input type='text' name='contact_phone' pattern='/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im' placeholder='טלפון ליצירת קשר'></input>
+                        <input type='text' name='contact_phone' ref={contact_phone_ref} pattern='/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im' placeholder='טלפון ליצירת קשר'></input>
                     </div>
                     <div className='order-inputs-container'>
                         תאריך איסוף:
