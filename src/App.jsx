@@ -2,7 +2,6 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import './App.css';
 import logo from '/cook-with-love-logo.JPG?url';
 import OrderPage from './components/OrderPage/OrderPage.component';
-import Management from './components/Management/Management.component';
 import { useState, useEffect } from "react";
 
 const App = () => {
