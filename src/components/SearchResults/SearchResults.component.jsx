@@ -32,6 +32,7 @@ const SearchResults = (props) => {
 
     return (
         <div className='search-results order-details'>
+            <div onClick={() => props.closeSearch()} className='back-arrow'></div>
             <h2 className='order-details-title search-result-title'>תוצאות חיפוש עבור "{props.userSearchedInput}"</h2>
             <div className='results_container'>
                 {searchResultsArr.length === 0 ?

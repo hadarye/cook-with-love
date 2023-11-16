@@ -9,10 +9,11 @@ const RegisterPopUp = (props) => {
     const nameRef = useRef("");
     const phoneRef = useRef("");
     const typeRef = useRef("");
-    const isKosherRef = useRef(false);
+    const [isKosher, setIsKosher] = useState(false);
 
     const formSubmit = async (e) => {
         e.preventDefault();
+
         const url = 'https://8nkv5zptli.execute-api.eu-west-1.amazonaws.com/dev/dishes/register';
         const objRegistration = {
             "order_id": String(props.order_Id),
@@ -20,7 +21,7 @@ const RegisterPopUp = (props) => {
             "dish_type": String(props.dishType),
             "baker_phone": String(phoneRef.current.value),
             "baker_dish_type": String(typeRef.current.value),
-            "baker_kosher": Boolean(isKosherRef.current),
+            "baker_kosher": Boolean(isKosher),
             "number_of_dishes": Number(numInputValue)
         }
         console.log('registrasion ', objRegistration)
@@ -39,7 +40,6 @@ const RegisterPopUp = (props) => {
         nameRef.current.value = "";
         phoneRef.current.value = "";
         typeRef.current.value = "";
-        isKosherRef.current = false;
         setNumInputValue(1);
         props.HidePopUp();
     }
@@ -73,7 +73,7 @@ const RegisterPopUp = (props) => {
                         </div>
                         <div className='checkbox-container'>
                             כשר?
-                            <input ref={isKosherRef} className='checkbox' type="checkbox" value="kosher" />
+                            <input onChange={() => setIsKosher(!isKosher)} className='checkbox' type="checkbox" value="kosher" />
                         </div>
                         <button type="submit" className='register-btn popup-btn'>הרשמה</button>
                     </form>

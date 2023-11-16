@@ -1,6 +1,5 @@
 .search-result-title {
-    position: absolute;
-    top: 0;
+    margin-top: 2rem;
 }
 
 .search-results {

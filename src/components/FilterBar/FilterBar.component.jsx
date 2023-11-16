@@ -2,12 +2,14 @@
 import { useEffect, useRef, useState } from 'react'
 import './FilterBar.styles.css'
 import searchBtn from '../../assets/images/search.png'
-import sliders from '../../assets/images/settings-sliders.png'
+import checkbox from '../../assets/images/checkbox.png'
+import checkboxChecked from '../../assets/images/checkbox-checked.png'
 import SearchResults from '../SearchResults/SearchResults.component'
 
 const FilterBar = (props) => {
     const [isSearch, setIsSearch] = useState(false);
     const search_input_ref = useRef();
+    const [isFilterOn, setIsFilterOn] = useState(false);
     const [searchInputValue, setSearchInputValue] = useState("");
     const [showSearchResults, setShowSearchResults] = useState(false);
 
@@ -18,21 +20,31 @@ const FilterBar = (props) => {
             if (search_input_ref.current.value !== "") {
                 setSearchInputValue(search_input_ref.current.value);
                 setShowSearchResults(true);
+            } else {
+                setIsSearch(false);
             }
         }
+    }
+
+    const closeSearch = () => {
+        search_input_ref.current.value === "";
+        setShowSearchResults(false);
     }
 
     return (
         <>
             <div className='filter-bar'>
-                <img className='filter-icon' src={sliders} />
+                <div onClick={() => {setIsFilterOn(!isFilterOn); props.filterOrderArr()}} className='filter-container'>
+                    <img className='filter-icon checkbox-icon' src={isFilterOn ? checkboxChecked : checkbox} />
+                    <p className='after-checkbox-text'>סנן לפי זמינות</p>
+                </div>
                 <div className={isSearch ? 'search' : 'search closed'}>
                     <input ref={search_input_ref} placeholder='חפשו לפי שם המבשלת...' className='search-bar' />
                     <img onClick={() => startSearch()} className='filter-icon search-icon' src={searchBtn} />
                 </div>
 
             </div>
-            {showSearchResults ? <SearchResults userSearchedInput={searchInputValue}></SearchResults> : null}
+            {showSearchResults ? <SearchResults closeSearch={closeSearch} userSearchedInput={searchInputValue}></SearchResults> : null}
         </>
 
     )
