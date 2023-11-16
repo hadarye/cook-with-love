@@ -5,10 +5,15 @@ import './SearchResults.styles.css'
 const SearchResults = (props) => {
     const [userSearchedInput, setUserSearchedInput] = useState(props.userSearchedInput);
     const [searchResultsArr, setSearchResultsArr] = useState([]);
+
     useEffect(() => {
-        console.log(userSearchedInput);
         getData(userSearchedInput);
     }, [userSearchedInput]);
+
+    // delete later
+    useEffect(() => {
+        console.log(searchResultsArr);
+    }, [searchResultsArr]);
 
     async function getData(searchValue) {
         let accumuletor = []
@@ -20,58 +25,38 @@ const SearchResults = (props) => {
         setSearchResultsArr(accumuletor);
     }
 
-    useEffect(() => {
-        console.log(searchResultsArr);
-    }, [searchResultsArr]);
-
-    const filterArr = (bakers) => {
-        let bakersArr = bakers;
-        let initialValue = [{}];
-        const filterBakers = bakersArr.reduce(
-            (accumulator, currentValue) => {
-                if (accumulator.at(-1)["dish_type"] === currentValue["dish_type"]) {
-                    if (typeof (accumulator.at(-1).counter) !== "number") {
-                        accumulator.at(-1).counter = 1;
-                    } else {
-                        accumulator.at(-1).counter++;
-                        // console.log(accumulator);
-                    }
-                    return accumulator;
-                } else {
-                    return [...accumulator, currentValue];
-                }
-            },
-            initialValue,
-        );
-        filterBakers.splice(0, 1);
-        console.log(filterBakers);
-        return (filterBakers);
+    const fixDateStr = (collectingDate) => {
+        let date = new Date(collectingDate);
+        return (` ${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")} , ${date.getHours()}:${String(date.getMinutes()).padStart(2, "0")}`);
     }
 
     return (
-        <div className='order-details'>
+        <div className='search-results order-details'>
             <h2 className='order-details-title search-result-title'>תוצאות חיפוש עבור "{props.userSearchedInput}"</h2>
-            {searchResultsArr.length === 0 ?
-                <div>לא נמצאו תוצאות לחיפוש זה.</div>
-                : searchResultsArr.map((meal) => (
-                    <div key={meal.order_id}>
-                        <p>{meal.collecting_date}</p>
-                        <p>{meal.collecting_location}</p>
-                        <p>{meal.order_name}</p>
-
-                        {meal.dishes.map((dish) => (
-                            <div>
-                                <p>{dish.bakers.length}</p>
-                                {dish.bakers.map((baker) => (
-                                    <div key={baker.dish_type}>
-                                        <p>{baker.dish_type}</p>
-                                    </div>
-
-                                ))}
+            <div className='results_container'>
+                {searchResultsArr.length === 0 ?
+                    <div>לא נמצאו תוצאות לחיפוש זה.</div>
+                    : searchResultsArr.map((meal) => (
+                        <div className='search-result' key={meal.order_id}>
+                            <h4 id='order_name'>{meal.order_name}</h4>
+                            <div className='order-details-container'>
+                                <p id='collection_date'>{fixDateStr(meal.collecting_date)}</p>
+                                <p id='collecting_location'>{meal.collecting_location}</p>
                             </div>
-                        ))}
-                    </div>
-                ))}
+                            {meal.dishes.map((dish) => (
+                                <div className='dish-container' key={dish.tooltip}>
+                                    <p id='meals_num'>{dish.bakers.length}</p>
+                                    <p id='dish_name'>{dish.type}</p>
+                                    <p className='baker-info-kosher' id='is_kosher'>{dish.bakers[0].kosher ? "כשר" : "לא כשר"}</p>
+                                    {/* <p id='dish_type_title'>פירוט: </p> */}
+                                    {/* <p id='dish_type'>{dish.bakers[0].dish_type === "" ? "אין" : dish.bakers[0].dish_type}</p> */}
+
+                                </div>
+                            ))}
+                        </div>
+                    ))}
+            </div>
+
         </div>
     )
 }
