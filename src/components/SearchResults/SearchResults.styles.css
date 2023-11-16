@@ -47,7 +47,7 @@
 .dish-container {
     width: 100%;
     display: grid; 
-    grid-template-columns: 0.2fr 1fr 0.2fr; 
+    grid-template-columns: 0.2fr 1fr 0.4fr; 
     /* grid-template-rows: 1fr 1fr;  */
     gap: 0px 0px; 
     grid-template-areas: 
@@ -85,4 +85,5 @@
 
 #is_kosher {
     grid-area: kosher;
+    text-align: center;
 }
