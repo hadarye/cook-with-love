@@ -15,7 +15,7 @@
 .baker-info {
     display: grid;
     grid-template-columns: 1.5fr 3.5fr 1fr;
-    width: 100%;
+    width: 95%;
     margin: 1rem 0;
 }
 

@@ -54,24 +54,26 @@ body {
 .title {
   color: #da627d;
   font-family: "narkis-bold";
-  font-size: 5rem;
+  font-size: 4.5rem;
   margin-bottom: 0;
+  margin-top: 1rem;
 }
 
 .secondary-title {
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   font-family: "narkis-thin";
   color: #576C31;
-  font-size: 3rem;
+  font-size: 2.5rem;
   position: absolute;
   bottom: 0;
   width: 100%;
+  pointer-events: none;
 }
 
 .title-container {
   position: relative;
-  height: 9.5rem;
+  height: 7.5rem;
   width: 90%;
   margin: auto;
 }

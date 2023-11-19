@@ -1,9 +1,9 @@
 .order-bar {
     width: 85vw;
-    display: grid;
+    position: relative;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     text-align: right;
-    grid-template-columns: 2.5fr 1fr 1fr;
+    /* grid-template-columns: 2.5fr 1fr 1fr; */
     justify-items: stretch;
     /* border: solid 0.5px #abba7c9f; */
     border-radius: 5px;
@@ -13,8 +13,29 @@
     background-color: #fffeff;
 }
 
+.order-bar h4 {
+    font-size: 2rem;
+    margin: 0;
+    color: #da627d;
+    line-height: 2rem;
+    font-family: "narkis-thin";
+
+}
+
 .order-bar-text {
     margin: 0;
     max-width: 50vw;
     text-align: right;
+}
+
+.bar-text-container {
+    width: 100%;
+    grid-template-columns: 2.5fr 1fr 1fr;
+    display: grid;
+}
+
+.status-icon {
+    position: absolute;
+    width: 1rem;
+    left: 1rem;
 }

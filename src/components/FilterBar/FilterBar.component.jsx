@@ -36,7 +36,7 @@ const FilterBar = (props) => {
             <div className='filter-bar'>
                 <div onClick={() => {setIsFilterOn(!isFilterOn); props.filterOrderArr()}} className='filter-container'>
                     <img className='filter-icon checkbox-icon' src={isFilterOn ? checkboxChecked : checkbox} />
-                    <p className='after-checkbox-text'>סנן לפי זמינות</p>
+                    <p className='after-checkbox-text'>הצג רק מנות חסרות</p>
                 </div>
                 <div className={isSearch ? 'search' : 'search closed'}>
                     <input ref={search_input_ref} placeholder='חפשו לפי שם המבשלת...' className='search-bar' />
