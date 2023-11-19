@@ -5,6 +5,7 @@ import RegisterPopUp from '../RegisterPopUp/RegisterPopUp.component';
 import InfoPopUp from '../InfoPopUp/InfoPopUp.component';
 
 const OrderDetails = (props) => {
+    // const [orderObj, setOrderObj] = useState({});
     const [dishesArr, setDishesArr] = useState(props.dishes);
     const [isShowRegisterPopUp, setIsShowRegisterPopUp] = useState(false);
     const [isShowInfoPopUp, setIsShowInfoPopUp] = useState(false);
@@ -22,6 +23,7 @@ const OrderDetails = (props) => {
     const HidePopUp = () => {
         setIsShowRegisterPopUp(false);
         setIsShowInfoPopUp(false);
+        getData();
     }
 
     const ShowInfoPopUp = (dish) => {
@@ -29,12 +31,24 @@ const OrderDetails = (props) => {
         setIsShowInfoPopUp(true);
     }
 
+    async function getData() {
+        let accumuletor = [];
+        let orderObj = {};
+        let response = await fetch("https://8nkv5zptli.execute-api.eu-west-1.amazonaws.com/dev/orders");
+        let result = await response.json();
+        for (let meal of result) {
+            if(meal.order_id === props.orderId) {
+               accumuletor.push(meal); 
+            }  
+        }
+        orderObj = accumuletor[0];
+        setDishesArr(orderObj.dishes);
+    }
+
     return (
         <div className='order-details'>
             <div onClick={() => props.closeDescription()} className='back-arrow'></div>
             <h2 className='order-details-title'>{props.orderType}</h2>
-
-
             <div className='details-container'>
                 <div className='details-top-bar'>
                     <div>מנה</div>
@@ -47,7 +61,7 @@ const OrderDetails = (props) => {
                             <p style={{ paddingLeft: "1.5rem" }}>{dish.type}</p>
                             <p>{dish.total_missing}</p>
                             <p>{dish.kosher_missing}</p>
-                            {!props.isManager ? <button onClick={() => ShowRegisterPopUp(dish)} className='register-btn'>הרשמה</button> : null}
+                            {!props.isManager && dish.total_missing > 0 ? <button onClick={() => ShowRegisterPopUp(dish)} className='register-btn'>הרשמה</button> : null}
                             {props.isManager ? <button onClick={() => ShowInfoPopUp(dish)} className='register-btn'>פרטים</button> : null}
                         </div>
                     ))}
@@ -63,7 +77,6 @@ const OrderDetails = (props) => {
             <div className={isShowInfoPopUp ? "" : "hidden"}>
                 <InfoPopUp dish={chosenDish} HidePopUp={HidePopUp} />
             </div>
-
         </div>
     )
 }

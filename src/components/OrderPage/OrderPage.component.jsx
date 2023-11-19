@@ -28,6 +28,7 @@ const OrderPage = (props) => {
 
     const closeDescription = () => {
         setShowDescription(false);
+        location.reload();
     }
 
     const closeNewOrder = () => {
