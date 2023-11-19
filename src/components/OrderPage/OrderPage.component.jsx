@@ -55,7 +55,7 @@ const OrderPage = (props) => {
             {props.isManager ?
                 <div>
                     <img src={AddFormBtn} className='add-form-btn' onClick={() => setNewOrder(true)} />
-                    <h4 className='secondary-title'>עמוד מנהלה</h4>
+                    <h4 className='secondary-title management-title'>עמוד מנהלה</h4>
                 </div>
                 : null}
             {newOrder ?

@@ -42,7 +42,7 @@ const InfoPopUp = (props) => {
                 <h2 className='order-details-title pop-up-title'>{props.dish.type}</h2>
                 {filteredBakersArr === undefined ? null : filteredBakersArr.map((baker) => (
                     <div key={baker.index} className='baker-info'>
-                        <p className='baker-info-number'>{typeof (baker.counter) === "number" ? baker.counter : 1}</p>
+                        <p className='baker-info-number'>{typeof (baker.counter) === "number" ? baker.counter + 1 : 1}</p>
                         <div>
                             <p className='baker-info-text'>{baker.name}</p>
                             <p className='baker-info-text'>{baker.phone}</p>
