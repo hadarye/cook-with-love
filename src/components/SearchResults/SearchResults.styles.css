@@ -15,6 +15,13 @@
     padding: 1rem;
     font-size: 1.2rem;
     background-color: #fffeff;
+    position: relative;
+}
+
+.trash-icon {
+    position: absolute;
+    width: 1.5rem;
+    left: 1rem;
 }
 
 .search-result h4 {
@@ -86,4 +93,14 @@
 #is_kosher {
     grid-area: kosher;
     text-align: center;
+}
+
+.delete-popup p {
+    font-size: 1.2rem;
+    margin: 3rem 0 1rem 0;
+}
+
+.delete-popup {
+    padding: 0 1rem 2rem 1rem;
+    width: 80%;
 }

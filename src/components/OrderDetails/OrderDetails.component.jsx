@@ -69,7 +69,7 @@ const OrderDetails = (props) => {
             </div>
             <div className='order-details-subtitle'>
                 <p className='subtitle-text'>{`${dateRef.current} ${timeRef.current}`}</p>
-                <p className='subtitle-text'>כתובת: {props.adress}</p>
+                <p className='subtitle-text'>{props.adress}</p>
             </div>
             <div className={isShowRegisterPopUp ? " " : 'hidden'}>
                 <RegisterPopUp availableCount={chosenDish.total_missing} dishType={chosenDish.type} HidePopUp={HidePopUp} order_Id={props.orderId}></RegisterPopUp>
