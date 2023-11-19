@@ -48,8 +48,8 @@ const App = () => {
       {/* <img className='app-logo' src={logo}></img> */}
 
       <Routes>
-        <Route path="/" element={<OrderPage filterOrderArr={filterOrderArr} OrderList={OrderList} isManager={false} />} />
-        <Route path="/management" element={<OrderPage filterOrderArr={filterOrderArr} OrderList={OrderList} isManager={true} />}></Route>
+        <Route path="/" element={<OrderPage getData={getData} filterOrderArr={filterOrderArr} OrderList={OrderList} isManager={false} />} />
+        <Route path="/management" element={<OrderPage getData={getData} filterOrderArr={filterOrderArr} OrderList={OrderList} isManager={true} />}></Route>
       </Routes>
       <button onClick={() => navigate('/management')}>management</button>
       <button onClick={() => navigate('/')}>home</button>

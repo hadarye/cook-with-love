@@ -48,7 +48,7 @@ body {
 
 .hidden {
   pointer-events: none;
-  visibility: hidden;
+  display: none;
 }
 
 .title {

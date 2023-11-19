@@ -9,6 +9,7 @@ const RegisterPopUp = (props) => {
     const nameRef = useRef("");
     const phoneRef = useRef("");
     const typeRef = useRef("");
+    const [isFormSubmited, setIsFormSubmited] = useState(false);
     const [isKosher, setIsKosher] = useState(false);
 
     const formSubmit = async (e) => {
@@ -30,16 +31,16 @@ const RegisterPopUp = (props) => {
             body: JSON.stringify(objRegistration),
         });
         console.log('post completed');
-        clearForm();
         const result = await response.json()
         console.log(result);
-        console.warn('refresh')
+        setIsFormSubmited(true);
     }
 
     const clearForm = () => {
         nameRef.current.value = "";
         phoneRef.current.value = "";
         typeRef.current.value = "";
+        setIsFormSubmited(false);
         setNumInputValue(1);
         props.HidePopUp();
     }
@@ -49,7 +50,7 @@ const RegisterPopUp = (props) => {
             <div className='black-screen'>
                 <div className='popup-container'>
                     <div onClick={() => clearForm() } className='close-btn'></div>
-                    <form className='form-container' onSubmit={formSubmit}>
+                    <form className={isFormSubmited ? 'hidden' : 'form-container'} onSubmit={formSubmit}>
                         <h2 className='order-details-title pop-up-title'>{props.dishType}</h2>
                         <div className='input-container'>
                             שם מלא
@@ -77,6 +78,11 @@ const RegisterPopUp = (props) => {
                         </div>
                         <button type="submit" className='register-btn popup-btn'>הרשמה</button>
                     </form>
+                    <div className={ isFormSubmited ? '' :
+                     'hidden'}>
+                        <h2 className='order-details-title pop-up-title'>{props.dishType}</h2>
+                        <p className='confirmation-text'>נרשמת בהצלחה ל{numInputValue} מנות!</p>
+                    </div>
                 </div>
             </div>
         </>

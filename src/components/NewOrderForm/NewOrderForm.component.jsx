@@ -49,9 +49,9 @@ const NewOrderForm = (props) => {
         });
         console.log('post completed');
         // clearForm();
+        props.HidePopUp();
         const result = await response.json()
         console.log(result);
-        console.warn('refresh');
     }
 
     const clearForm = () => {

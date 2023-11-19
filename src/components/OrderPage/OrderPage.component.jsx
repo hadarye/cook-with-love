@@ -28,14 +28,12 @@ const OrderPage = (props) => {
 
     const closeDescription = () => {
         setShowDescription(false);
-        location.reload();
+        props.getData();
     }
 
     const closeNewOrder = () => {
         setNewOrder(false);
     }
-
-
 
     return (
         <div className='order-page'>
