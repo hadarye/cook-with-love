@@ -19,8 +19,11 @@
   text-align: center;
   font-family: 'assistant';
   direction: rtl;
-  font-size: calc(10px + 1vw);
   height: 100%;
+}
+
+html {
+  font-size: calc(8px + 2vw);
 }
 
 body {
