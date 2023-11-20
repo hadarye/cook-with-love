@@ -46,7 +46,6 @@ const SearchResults = (props) => {
     }
 
     const unRegister = async () => {
-
         const url = 'https://8nkv5zptli.execute-api.eu-west-1.amazonaws.com/dev/dishes/unregister';
         const objUnRegister = {
             "order_id": chosenMeal.current.order_id,
@@ -62,6 +61,9 @@ const SearchResults = (props) => {
         console.log('post completed');
         const result = await response.json()
         console.log(result);
+        setNumInputValue(1); 
+        setShowPopUp(false);
+        getData(userSearchedInput);
     }
 
     return (
@@ -86,8 +88,8 @@ const SearchResults = (props) => {
                                     <p id='meals_num'>{dish.bakers.length}</p>
                                     <p id='dish_name'>{dish.type}</p>
                                     {/* <p className='baker-info-kosher' id='is_kosher'>{dish.bakers[0].kosher ? "כשר" : "לא כשר"}</p> */}
-                                    {/* <p id='dish_type_title'>פירוט: </p> */}
-                                    {/* <p id='dish_type'>{dish.bakers[0].dish_type === "" ? "אין" : dish.bakers[0].dish_type}</p> */}
+                                    <p id='dish_type_title'>פירוט: </p>
+                                    <p id='dish_type'>{dish.bakers[0].dish_type === "" ? "אין" : dish.bakers[0].dish_type}</p>
 
                                 </div>
                             ))}

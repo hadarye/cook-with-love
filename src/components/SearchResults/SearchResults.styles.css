@@ -73,15 +73,18 @@
 #meals_num {
     grid-area: num;
     color: #da627d;
+    text-align: right;
 }
 
 #dish_name {
     grid-area: name;
+    text-align: right;
 }
 
 #dish_type {
     grid-area: details;
     text-align: right;
+    margin-right: 0.5rem;
 }
 
 #dish_type_title {

@@ -16,6 +16,36 @@
     font-size: 1.2rem;
     width: 80%;
     margin: 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 0.5fr 0.5fr;
+
+    justify-items: start;
+    gap: 0px 0px;
+    grid-template-areas:
+        "collectorDetails collectorDetails"
+        "collectorName collectorPhone"
+        "collectorTime collectorAdress";
+}
+
+#collectorDetails {
+    grid-area: collectorDetails;
+}
+
+#collectorName {
+    grid-area: collectorName;
+}
+
+#collectorPhone {
+    grid-area: collectorPhone;
+}
+
+#collectorAdress {
+    grid-area: collectorAdress;
+}
+
+#collectorTime {
+    grid-area: collectorTime;
 }
 
 .back-arrow {
@@ -42,7 +72,7 @@
 }
 
 .details-container {
-    background-color: #fffeff;    
+    background-color: #fffeff;
     width: 85vw;
     max-height: 60%;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -94,4 +124,11 @@
 
 .subtitle-text {
     margin: 0;
+}
+
+.order-details-subtitle h4 {
+    font-family: Narkis-bold;
+    margin: 0;
+    font-size: 2rem;
+    color: #da627d;
 }

@@ -48,7 +48,7 @@ const OrderPage = (props) => {
                 ))}
             </div>
             {showDescription ?
-                <OrderDetails isManager={props.isManager} orderId={currentOrder.current.order_id} dishes={currentOrder.current.dishes} adress={currentOrder.current.collecting_location} closeDescription={closeDescription} orderType={orderNames[currentOrder.current.order_type]} date={currentOrder.current.collecting_date}></OrderDetails>
+                <OrderDetails isManager={props.isManager} collectorName={currentOrder.current.collecting_person_name} collectorPhone={currentOrder.current.collecting_person_phone} orderId={currentOrder.current.order_id} dishes={currentOrder.current.dishes} adress={currentOrder.current.collecting_location} closeDescription={closeDescription} orderType={orderNames[currentOrder.current.order_type]} date={currentOrder.current.collecting_date}></OrderDetails>
                 : null}
             {props.isManager ?
                 <div>
