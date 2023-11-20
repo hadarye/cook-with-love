@@ -76,47 +76,49 @@ const OrderDetails = (props) => {
     }
 
     return (
-        <div className='order-details'>
-            <div className='top-details-container'>
-                <div onClick={() => props.closeDescription()} className='back-arrow'></div>
-                <div onClick={() => handleFilterBtn()} className='filter-container filter-details'>
-                    <img className='filter-icon checkbox-icon' src={isFilterDishes ? checkboxChecked : checkbox} />
-                    <p className='after-checkbox-text'>הצג רק מנות חסרות</p>
+        <div className='order-details-bg'>
+            <div className='order-details'>
+                <div className='top-details-container'>
+                    <div onClick={() => props.closeDescription()} className='back-arrow'></div>
+                    <div onClick={() => handleFilterBtn()} className='filter-container filter-details'>
+                        <img className='filter-icon checkbox-icon' src={isFilterDishes ? checkboxChecked : checkbox} />
+                        <p className='after-checkbox-text'>הצג רק מנות חסרות</p>
+                    </div>
                 </div>
-            </div>
-            <div className='main-details-container'>
+                <div className='main-details-container'>
 
-                <h2 className='order-details-title'>{props.orderType}</h2>
-                <div className='details-container'>
-                    <div className='details-top-bar'>
-                        <div>מנה</div>
-                        <div>הכל</div>
-                        <div>כשרות</div>
+                    <h2 className='order-details-title'>{props.orderType}</h2>
+                    <div className='details-container'>
+                        <div className='details-top-bar'>
+                            <div>מנה</div>
+                            <div>הכל</div>
+                            <div>כשרות</div>
+                        </div>
+                        <div className='order-container'>
+                            {dishesArr.map((dish) => (
+                                <div key={dish.type} className='dish-details'>
+                                    <p style={{ paddingLeft: "1.5rem" }}>{dish.type}</p>
+                                    <p>{dish.total_missing}</p>
+                                    <p>{dish.kosher_missing}</p>
+                                    {!props.isManager && dish.total_missing > 0 ? <button onClick={() => ShowRegisterPopUp(dish)} className='register-btn'>הרשמה</button> : null}
+                                    {props.isManager ? <button onClick={() => ShowInfoPopUp(dish)} className='register-btn'>פרטים</button> : null}
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                    <div className='order-container'>
-                        {dishesArr.map((dish) => (
-                            <div key={dish.type} className='dish-details'>
-                                <p style={{ paddingLeft: "1.5rem" }}>{dish.type}</p>
-                                <p>{dish.total_missing}</p>
-                                <p>{dish.kosher_missing}</p>
-                                {!props.isManager && dish.total_missing > 0 ? <button onClick={() => ShowRegisterPopUp(dish)} className='register-btn'>הרשמה</button> : null}
-                                {props.isManager ? <button onClick={() => ShowInfoPopUp(dish)} className='register-btn'>פרטים</button> : null}
-                            </div>
-                        ))}
+                    <div className='order-details-subtitle'>
+                        <h4 id='collectorDetails' >פרטי המאסף:</h4>
+                        <p id='collectorName' className='subtitle-text'>{props.collectorName}</p>
+                        <p id='collectorPhone' className='subtitle-text'>{`${dateRef.current} ${timeRef.current}`}</p>
+                        <p id='collectorAdress' className='subtitle-text'>{props.adress}</p>
+                        <p id='collectorTime' className='subtitle-text'>{props.collectorPhone}</p>
                     </div>
-                </div>
-                <div className='order-details-subtitle'>
-                    <h4 id='collectorDetails' >פרטי המאסף:</h4>
-                    <p id='collectorName' className='subtitle-text'>{props.collectorName}</p>
-                    <p id='collectorPhone' className='subtitle-text'>{`${dateRef.current} ${timeRef.current}`}</p>
-                    <p id='collectorAdress' className='subtitle-text'>{props.adress}</p>
-                    <p id='collectorTime' className='subtitle-text'>{props.collectorPhone}</p>
-                </div>
-                <div className={isShowRegisterPopUp ? " " : 'hidden'}>
-                    <RegisterPopUp availableCount={chosenDish.total_missing} dishType={chosenDish.type} HidePopUp={HidePopUp} order_Id={props.orderId}></RegisterPopUp>
-                </div>
-                <div className={isShowInfoPopUp ? "" : "hidden"}>
-                    <InfoPopUp dish={chosenDish} HidePopUp={HidePopUp} />
+                    <div className={isShowRegisterPopUp ? " " : 'hidden'}>
+                        <RegisterPopUp availableCount={chosenDish.total_missing} dishType={chosenDish.type} HidePopUp={HidePopUp} order_Id={props.orderId}></RegisterPopUp>
+                    </div>
+                    <div className={isShowInfoPopUp ? "" : "hidden"}>
+                        <InfoPopUp dish={chosenDish} HidePopUp={HidePopUp} />
+                    </div>
                 </div>
             </div>
         </div>

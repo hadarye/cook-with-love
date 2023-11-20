@@ -1,15 +1,20 @@
 .order-details {
-    width: 100vw;
+    width: 100%;
     height: calc(100vh - 100px);
-    background-color: #f9f1f2;
-    position: absolute;
-    top: 0;
-    z-index: 2;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
     justify-content: center;
     align-items: flex-start
+}
+
+.order-details-bg {
+    width: 100vw;
+    height: 100vh;
+    background-color: #f9f1f2;
+    position: absolute;
+    top: 0;
+    z-index: 2;
 }
 
 .filter-details {
