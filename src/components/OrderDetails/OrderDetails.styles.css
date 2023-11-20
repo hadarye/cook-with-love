@@ -7,9 +7,9 @@
     z-index: 2;
     display: flex;
     flex-wrap: wrap;
-    align-content: center;
+    align-content: flex-start;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start
 }
 
 .filter-details {
@@ -21,7 +21,7 @@
 
 .order-details-subtitle {
     font-size: 1.2rem;
-    width: 80%;
+    width: 100%;
     margin: 1rem 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -139,4 +139,17 @@
     margin: 0;
     font-size: 2rem;
     color: #da627d;
+}
+
+.main-details-container {
+    height: 90%;
+    margin: 0;
+    padding: auto;
+}
+
+.top-details-container {
+    height: 10%;
+    width: 100%;
+    position: relative;
+    top: 0;
 }
