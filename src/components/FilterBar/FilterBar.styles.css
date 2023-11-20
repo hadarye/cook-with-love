@@ -13,9 +13,16 @@
 }
 
 .after-checkbox-text {
-    position: absolute;
     margin: 0 1rem;
     color: #576C31;
+    overflow: visible;
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .search-bar {

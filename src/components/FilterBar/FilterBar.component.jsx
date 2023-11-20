@@ -2,8 +2,8 @@
 import { useEffect, useRef, useState } from 'react'
 import './FilterBar.styles.css'
 import searchBtn from '../../assets/images/search.png'
-import checkbox from '../../assets/images/checkbox.png'
-import checkboxChecked from '../../assets/images/checkbox-checked.png'
+import checkbox from '../../assets/images/checkbox.svg'
+import checkboxChecked from '../../assets/images/checkbox-checked.svg'
 import SearchResults from '../SearchResults/SearchResults.component'
 
 const FilterBar = (props) => {
@@ -35,8 +35,8 @@ const FilterBar = (props) => {
         <>
             <div className='filter-bar'>
                 <div onClick={() => {setIsFilterOn(!isFilterOn); props.filterOrderArr()}} className='filter-container'>
-                    <img className='filter-icon checkbox-icon' src={isFilterOn ? checkboxChecked : checkbox} />
-                    <p className='after-checkbox-text'>הצג רק מנות חסרות</p>
+                    {/* <img className='filter-icon checkbox-icon' src={isFilterOn ? checkboxChecked : checkbox} />
+                    <p className='after-checkbox-text'>הצג רק מנות חסרות</p> */}
                 </div>
                 <div className={isSearch ? 'search' : 'search closed'}>
                     <input ref={search_input_ref} placeholder='חפשו לפי שם המבשלת...' className='search-bar' />

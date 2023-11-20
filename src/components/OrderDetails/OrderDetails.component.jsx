@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from 'react'
 import './OrderDetails.styles.css'
 import RegisterPopUp from '../RegisterPopUp/RegisterPopUp.component';
 import InfoPopUp from '../InfoPopUp/InfoPopUp.component';
+import checkbox from '../../assets/images/checkbox.svg'
+import checkboxChecked from '../../assets/images/checkbox-checked.svg'
 
 const OrderDetails = (props) => {
     // const [orderObj, setOrderObj] = useState({});
@@ -10,10 +12,15 @@ const OrderDetails = (props) => {
     const [isShowRegisterPopUp, setIsShowRegisterPopUp] = useState(false);
     const [isShowInfoPopUp, setIsShowInfoPopUp] = useState(false);
     const [chosenDish, setChosenDish] = useState({});
+    const [isFilterDishes, setIsFilterDishes] = useState(true);
 
     let date = new Date(props.date);
     const dateRef = useRef(` ${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}`);
     const timeRef = useRef(`${date.getHours()}:${String(date.getMinutes()).padStart(2, "0")}`);
+
+    useEffect(() => {
+        getFilteredData();
+    }, [])
 
     const ShowRegisterPopUp = (dish) => {
         setChosenDish(dish);
@@ -23,7 +30,7 @@ const OrderDetails = (props) => {
     const HidePopUp = () => {
         setIsShowRegisterPopUp(false);
         setIsShowInfoPopUp(false);
-        getData();
+        isFilterDishes ? getFilteredData() : getData();
     }
 
     const ShowInfoPopUp = (dish) => {
@@ -37,17 +44,44 @@ const OrderDetails = (props) => {
         let response = await fetch("https://8nkv5zptli.execute-api.eu-west-1.amazonaws.com/dev/orders");
         let result = await response.json();
         for (let meal of result) {
-            if(meal.order_id === props.orderId) {
-               accumuletor.push(meal); 
-            }  
+            if (meal.order_id === props.orderId) {
+                accumuletor.push(meal);
+            }
         }
         orderObj = accumuletor[0];
         setDishesArr(orderObj.dishes);
     }
 
+    async function getFilteredData() {
+        let accumuletor = [];
+        let orderObj = {};
+        let response = await fetch("https://8nkv5zptli.execute-api.eu-west-1.amazonaws.com/dev/orders?has_missing_dish=true");
+        let result = await response.json();
+        for (let meal of result) {
+            if (meal.order_id === props.orderId) {
+                accumuletor.push(meal);
+            }
+        }
+        orderObj = accumuletor[0];
+        setDishesArr(orderObj.dishes);
+    }
+
+    const handleFilterBtn = () => {
+        if (isFilterDishes) {
+            getData();
+        } else {
+            getFilteredData();
+        }
+        setIsFilterDishes(!isFilterDishes);
+    } 
+
     return (
         <div className='order-details'>
             <div onClick={() => props.closeDescription()} className='back-arrow'></div>
+            <div onClick={() => handleFilterBtn()} className='filter-container filter-details'>
+                <img className='filter-icon checkbox-icon' src={isFilterDishes ? checkboxChecked : checkbox} />
+                <p className='after-checkbox-text'>הצג רק מנות חסרות</p>
+            </div>
             <h2 className='order-details-title'>{props.orderType}</h2>
             <div className='details-container'>
                 <div className='details-top-bar'>
