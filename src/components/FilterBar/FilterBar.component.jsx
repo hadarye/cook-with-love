@@ -39,7 +39,7 @@ const FilterBar = (props) => {
                     <p className='after-checkbox-text'>הצג רק מנות חסרות</p> */}
                 </div>
                 <div className={isSearch ? 'search' : 'search closed'}>
-                    <input type='search' ref={search_input_ref} placeholder='חפשו לפי שם המבשלת...' className='search-bar' />
+                    <input ref={search_input_ref} placeholder='חפשו לפי שם המבשלת...' className='search-bar' onKeyPress={(e) => {e.key === "Enter" ? startSearch() : null}}/>
                     <img onClick={() => startSearch()} className='filter-icon search-icon' src={searchBtn} />
                 </div>
 

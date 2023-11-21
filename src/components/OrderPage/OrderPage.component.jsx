@@ -51,7 +51,7 @@ const OrderPage = (props) => {
                 <OrderDetails isManager={props.isManager} collectorName={currentOrder.current.collecting_person_name} collectorPhone={currentOrder.current.collecting_person_phone} orderId={currentOrder.current.order_id} dishes={currentOrder.current.dishes} adress={currentOrder.current.collecting_location} closeDescription={closeDescription} orderType={orderNames[currentOrder.current.order_type]} date={currentOrder.current.collecting_date}></OrderDetails>
                 : null}
             {props.isManager ?
-                <div>
+                <div className='managment-bar-container'>
                     <img src={AddFormBtn} className='add-form-btn' onClick={() => setNewOrder(true)} />
                     <h4 className='secondary-title management-title'>עמוד מנהלה</h4>
                 </div>

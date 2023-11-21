@@ -23,7 +23,7 @@
 }
 
 html {
-  font-size: calc(8px + 2vw);
+  font-size: calc(5px + 3vw);
 }
 
 body {
@@ -52,31 +52,4 @@ body {
 .hidden {
   pointer-events: none;
   display: none;
-}
-
-.title {
-  color: #da627d;
-  font-family: "narkis-bold";
-  font-size: 4.5rem;
-  margin-bottom: 0;
-  margin-top: 1rem;
-}
-
-.secondary-title {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-family: "narkis-thin";
-  color: #576C31;
-  font-size: 2.5rem;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  pointer-events: none;
-}
-
-.title-container {
-  position: relative;
-  height: 7.5rem;
-  width: 90%;
-  margin: auto;
 }

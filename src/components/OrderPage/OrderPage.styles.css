@@ -1,13 +1,18 @@
 .order-page {
     position: relative;
     height: 100%;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .add-form-btn {
-    width: 3.5rem;
+    width: 3rem;
     position: absolute;
     left: 1rem;
-    bottom: 1rem;
+    bottom: 0;
 }
 
 .order-bar-container {
@@ -17,5 +22,41 @@
 }
 
 .management-title {
-    font-size: 2rem;
+    font-size: 2rem !important;
+    position: absolute;
+    bottom: 0;
+}
+
+
+.title {
+    color: #da627d;
+    font-family: "narkis-bold";
+    font-size: 4rem;
+    margin-bottom: 0;
+    margin-top: 1rem;
+    line-height: 60%;
+}
+
+.secondary-title {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-family: "narkis-thin";
+    color: #576C31;
+    font-size: 2.5rem;
+    width: 100%;
+    line-height: 40%;
+    pointer-events: none;
+}
+
+.title-container {
+    position: relative;
+    height: 20%;
+    width: 100%;
+    /* margin: auto; */
+}
+
+.managment-bar-container {
+    height: 10%;
+    width: 100%;
+    position: relative;
 }
