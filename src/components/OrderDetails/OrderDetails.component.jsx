@@ -92,7 +92,7 @@ const OrderDetails = (props) => {
                         <div className='details-top-bar'>
                             <div>מנה</div>
                             <div>הכל</div>
-                            <div>כשרות</div>
+                            <div>מתוכן כשרות</div>
                         </div>
                         <div className='order-container'>
                             {dishesArr.map((dish) => (
@@ -106,13 +106,15 @@ const OrderDetails = (props) => {
                             ))}
                         </div>
                     </div>
-                    <div className='order-details-subtitle'>
+                    { props.isManager ? 
+                        <button className='more-details-btn'>לפרטים נוספים</button>
+                    :<div className='order-details-subtitle'>
                         <h4 id='collectorDetails' >פרטי המאסף:</h4>
                         <p id='collectorName' className='subtitle-text'>{props.collectorName}</p>
                         <p id='collectorPhone' className='subtitle-text'>{`${dateRef.current} ${timeRef.current}`}</p>
                         <p id='collectorAdress' className='subtitle-text'>{props.adress}</p>
                         <p id='collectorTime' className='subtitle-text'>{props.collectorPhone}</p>
-                    </div>
+                    </div>}
                     <div className={isShowRegisterPopUp ? " " : 'hidden'}>
                         <RegisterPopUp availableCount={chosenDish.total_missing} dishType={chosenDish.type} HidePopUp={HidePopUp} order_Id={props.orderId}></RegisterPopUp>
                     </div>

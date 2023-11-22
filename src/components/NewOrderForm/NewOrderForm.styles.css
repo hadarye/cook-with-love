@@ -27,7 +27,8 @@
 }
 
 .new-order-form input[type=text],
-.new-order-form input[type=datetime-local]
+.new-order-form input[type=datetime-local],
+.new-order-form textarea
  {
     width: 80%;
     font-size: 1.2rem;
@@ -56,6 +57,15 @@
 }
 
 .order-inputs-container {
+    width: 90%;
+    text-align: right;
+    font-size: 1.2rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.order-numbers-container {
     width: 90%;
     text-align: right;
     font-size: 1.2rem;

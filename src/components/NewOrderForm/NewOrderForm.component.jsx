@@ -16,7 +16,6 @@ const NewOrderForm = (props) => {
     const order_type_ref = useRef("");
     const contact_name_ref = useRef("");
     const collecting_date_ref = useRef("");
-    // const collecting_date_input_ref = useRef("");
     const collecting_person_name_ref = useRef("");
     const collecting_location_ref = useRef("");
     const collecting_person_phone_ref = useRef("");
@@ -24,6 +23,8 @@ const NewOrderForm = (props) => {
     const total_ref = useRef("");
     const total_kosher_ref = useRef("");
     const total_vegetarians_ref = useRef("");
+    const comments_ref = useRef("");
+    const collecting_additional_info_ref = useRef("");
 
     const formSubmit = async (e) => {
         // e.preventDefault();
@@ -40,7 +41,9 @@ const NewOrderForm = (props) => {
             "collecting_person_phone": String(collecting_person_phone_ref.current.value),
             "total": Number(total_ref.current.value),
             "total_kosher": Number(total_kosher_ref.current.value),
-            "total_vegetarians": Number(total_vegetarians_ref.current.value)
+            "total_vegetarians": Number(total_vegetarians_ref.current.value),
+            "comments": String(comments_ref.current.value),
+            "collecting_additional_info": String(collecting_additional_info_ref.current.value)
         }
         console.log('registrasion ', objNewOrder);
         const response = await fetch(url, {
@@ -65,8 +68,6 @@ const NewOrderForm = (props) => {
 
     return (
         <div className='order-details-bg'>
-
-
             <div className='new-order'>
                 <div onClick={() => props.closeNewOrder()} className='back-arrow'></div>
                 <h2 className='order-details-title'>הזמנה חדשה</h2>
@@ -114,17 +115,25 @@ const NewOrderForm = (props) => {
                             מס׳ טלפון לאיסוף:
                             <input type='text' name='collecting_person_phone' placeholder='מס׳ טלפון לאיסוף' ref={collecting_person_phone_ref}></input>
                         </div>
-                        <div className='order-inputs-container'>
+                        <div className='order-numbers-container'>
                             סה״כ מנות:
                             <input type='number' name='total' ref={total_ref}></input>
                         </div>
-                        <div className='order-inputs-container'>
+                        <div className='order-numbers-container'>
                             מתוכן מנות כשרות:
                             <input type='number' name='total_kosher' ref={total_kosher_ref}></input>
                         </div>
-                        <div className='order-inputs-container'>
+                        <div className='order-numbers-container'>
                             מתוכן צמחוניות:
                             <input type='number' name='total_vegetarians' ref={total_vegetarians_ref}></input>
+                        </div>
+                        <div className='order-inputs-container'>
+                            הערות:
+                            <textarea name='comments' ref={comments_ref} resize="none" rows="3" cols="50" placeholder='חשוב לדעת...'></textarea>
+                        </div>
+                        <div className='order-inputs-container'>
+                            פרטי האיסוף:
+                            <textarea name='collecting_additional_info' ref={collecting_additional_info_ref} resize="none" rows="3" cols="50" placeholder='כתבי פרטים נוספים'></textarea>
                         </div>
                     </div>
                     <button className='register-btn' type='submit'>סיום</button>
