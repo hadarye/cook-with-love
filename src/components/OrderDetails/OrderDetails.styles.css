@@ -81,15 +81,29 @@
     flex-direction: column;
     bottom: 0;
     overflow-y: auto;
+    direction: rtl;
 }
 
 .details-container {
     background-color: #fffeff;
     width: 85vw;
-    max-height: 60%;
+    max-height: 70%;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     display: flex;
     flex-direction: column;
+}
+
+.order-container::-webkit-scrollbar {
+    width: 0.5rem;
+}
+ 
+.order-container::-webkit-scrollbar-track {
+    background-color: #f9f1f2;
+}
+ 
+.order-container::-webkit-scrollbar-thumb {
+  background-color: #ad838ca7;
+  border-radius: 5px;
 }
 
 .details-top-bar {
@@ -117,13 +131,17 @@
     align-content: center;
 }
 
+.dish-details p {
+    font-size: 1rem;
+}
+
 .register-btn {
     font-size: 1.2rem;
     font-family: assistant;
     background-color: white;
     border: solid 1px #576C31;
     color: #576C31;
-    padding: 0.5rem;
+    padding: 0.3rem 0.5rem;
     border-radius: 5px;
 }
 

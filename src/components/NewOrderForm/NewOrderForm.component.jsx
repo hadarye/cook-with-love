@@ -51,10 +51,10 @@ const NewOrderForm = (props) => {
             body: JSON.stringify(objNewOrder),
         });
         console.log('post completed');
-        // clearForm();
         props.HidePopUp();
         const result = await response.json()
         console.log(result);
+        location.reload();
     }
 
     const clearForm = () => {
@@ -72,7 +72,7 @@ const NewOrderForm = (props) => {
                 <div onClick={() => props.closeNewOrder()} className='back-arrow'></div>
                 <h2 className='order-details-title'>הזמנה חדשה</h2>
                 <form className='new-order-form' onSubmit={formSubmit}>
-                    <div className='form-inputs'>
+                    <div className='form-inputs details-container'>
                         <div className='order-inputs-container'>
                             שם המנהלת:
                             <input ref={manager_name_ref} type='text' name='manager_name' placeholder='שם המנהלת'></input>

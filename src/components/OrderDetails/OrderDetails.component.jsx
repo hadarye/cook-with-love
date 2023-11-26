@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import './OrderDetails.styles.css'
 import RegisterPopUp from '../RegisterPopUp/RegisterPopUp.component';
 import InfoPopUp from '../InfoPopUp/InfoPopUp.component';
+import MoreDetailsPopUp from '../MoreDetailsPopUp/MoreDetailsPopUp.component';
 import checkbox from '../../assets/images/checkbox.svg'
 import checkboxChecked from '../../assets/images/checkbox-checked.svg'
 
@@ -11,6 +12,7 @@ const OrderDetails = (props) => {
     const [dishesArr, setDishesArr] = useState(props.dishes);
     const [isShowRegisterPopUp, setIsShowRegisterPopUp] = useState(false);
     const [isShowInfoPopUp, setIsShowInfoPopUp] = useState(false);
+    const [isShowMoreDetailsPopUp, setIsShowMoreDetailsPopUp] = useState(false);
     const [chosenDish, setChosenDish] = useState({});
     const [isFilterDishes, setIsFilterDishes] = useState(true);
 
@@ -30,6 +32,7 @@ const OrderDetails = (props) => {
     const HidePopUp = () => {
         setIsShowRegisterPopUp(false);
         setIsShowInfoPopUp(false);
+        setIsShowMoreDetailsPopUp(false);
         isFilterDishes ? getFilteredData() : getData();
     }
 
@@ -86,7 +89,6 @@ const OrderDetails = (props) => {
                     </div>
                 </div>
                 <div className='main-details-container'>
-
                     <h2 className='order-details-title'>{props.orderType}</h2>
                     <div className='details-container'>
                         <div className='details-top-bar'>
@@ -107,7 +109,7 @@ const OrderDetails = (props) => {
                         </div>
                     </div>
                     { props.isManager ? 
-                        <button className='more-details-btn'>לפרטים נוספים</button>
+                        <button onClick={() => setIsShowMoreDetailsPopUp(true)} className='more-details-btn'>לפרטים נוספים</button>
                     :<div className='order-details-subtitle'>
                         <h4 id='collectorDetails' >פרטי המאסף:</h4>
                         <p id='collectorName' className='subtitle-text'>{props.collectorName}</p>
@@ -120,6 +122,9 @@ const OrderDetails = (props) => {
                     </div>
                     <div className={isShowInfoPopUp ? "" : "hidden"}>
                         <InfoPopUp dish={chosenDish} HidePopUp={HidePopUp} />
+                    </div>
+                    <div className={isShowMoreDetailsPopUp ? "" : "hidden"}>
+                       <MoreDetailsPopUp HidePopUp={HidePopUp} meal={props.currentOrder}></MoreDetailsPopUp> 
                     </div>
                 </div>
             </div>

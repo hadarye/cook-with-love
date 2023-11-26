@@ -28,7 +28,7 @@ html {
 
 body {
   width: 100vw;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 10vh);
   margin: 0;
   background-color: #f9f1f2;
   overflow: hidden;
