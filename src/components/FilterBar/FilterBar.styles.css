@@ -16,6 +16,8 @@
     margin: 0 1rem;
     color: #576C31;
     overflow: visible;
+    position: absolute;
+    bottom: 0rem;
 }
 
 .filter-container {
@@ -32,7 +34,7 @@
     position: absolute;
     right: 0;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-family: assistant;
     padding: 0 0.5rem;
 }
@@ -64,4 +66,16 @@
 
 .closed .search-bar {
     background-color: transparent;
+}
+
+.checkbox-filter-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: flex-start;
+    justify-content: center;
+    height: 4.5rem;
+    position: relative;
+    width: 30%;
 }
