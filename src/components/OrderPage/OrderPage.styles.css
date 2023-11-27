@@ -12,7 +12,7 @@
     width: 3rem;
     position: absolute;
     left: 1rem;
-    bottom: 0;
+    bottom: 0.5rem;
 }
 
 .order-bar-container {
@@ -50,7 +50,7 @@
 
 .title-container {
     position: relative;
-    height: 20%;
+    height: 20vh;
     width: 100%;
     /* margin: auto; */
 }

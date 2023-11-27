@@ -12,7 +12,7 @@ const OrderBar = (props) => {
     return (
         
         <div className='order-bar' onClick={() => props.handleOrderPressed(props.order)}>
-            <img className='status-icon' src={props.isPending ? pending : done}></img>
+            {/* <img className='status-icon' src={props.isPending ? pending : done}></img> */}
             <h4>{props.name}</h4>
             <div className='bar-text-container'>
                 <p className='order-bar-text'>{props.orderType}</p>
