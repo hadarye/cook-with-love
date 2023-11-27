@@ -80,10 +80,10 @@ input::placeholder {
 }
 
 .pop-up-title {
-    margin-top: 3vh !important;
+    margin-top: 6vh !important;
     margin-bottom: 1vh;
     line-height: 2.5rem;
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 .number-input {

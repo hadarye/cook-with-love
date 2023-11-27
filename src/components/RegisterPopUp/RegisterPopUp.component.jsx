@@ -90,7 +90,7 @@ const RegisterPopUp = (props) => {
                                 <img onClick={() => { numInputValue > 1 ? setNumInputValue(numInputValue - 1) : null }} src={subtract} className={numInputValue > 1 ? 'number-controller' : 'number-controller gray'} />
                             </div>
                         </div>
-                        <span className='warning-kosher'>{numInputValue < 1 && !isKosher ? "ניתן להכין רק מנות כשרות!" : null}</span>
+                        <span className='warning-kosher'>{numInputValue < 1 && !isKosher ? "נשארו רק מנות כשרות!" : null}</span>
                         <button type="submit" className='register-btn popup-btn' disabled={numInputValue < 1}>הרשמה</button>
                     </form>
                     <div className={ isFormSubmited ? '' :

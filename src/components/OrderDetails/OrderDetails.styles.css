@@ -25,13 +25,12 @@
 }
 
 .order-details-subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem;
     width: 100%;
     margin: 1rem 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 0.5fr 0.5fr;
-
     justify-items: start;
     gap: 0px 0px;
     grid-template-areas:
@@ -87,7 +86,7 @@
 .details-container {
     background-color: #fffeff;
     width: calc(85vw + 2rem);
-    max-height: 70%;
+    max-height: 65%;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     display: flex;
     flex-direction: column;
@@ -116,7 +115,7 @@
     width: 90%;
     margin: auto;
     padding: 0.5rem;
-    color: #ad838ca7;
+    color: #9b6772;
     align-items: center
 }
 
