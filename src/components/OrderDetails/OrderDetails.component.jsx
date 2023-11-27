@@ -118,7 +118,7 @@ const OrderDetails = (props) => {
                         <p id='collectorTime' className='subtitle-text'>{props.collectorPhone}</p>
                     </div>}
                     <div className={isShowRegisterPopUp ? " " : 'hidden'}>
-                        <RegisterPopUp availableCount={chosenDish.total_missing} dishType={chosenDish.type} HidePopUp={HidePopUp} order_Id={props.orderId}></RegisterPopUp>
+                        <RegisterPopUp availableCount={chosenDish.total_missing} availableKosher={chosenDish.kosher_missing} dishType={chosenDish.type} HidePopUp={HidePopUp} order_Id={props.orderId}></RegisterPopUp>
                     </div>
                     <div className={isShowInfoPopUp ? "" : "hidden"}>
                         <InfoPopUp dish={chosenDish} HidePopUp={HidePopUp} />

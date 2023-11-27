@@ -45,6 +45,20 @@ const RegisterPopUp = (props) => {
         props.HidePopUp();
     }
 
+    const calcMaxDishes = () => {
+        let maxDish = 1;
+        if (isKosher) {
+            maxDish = Number(props.availableCount);
+        } else {
+            maxDish = Number(props.availableCount) - Number(props.availableKosher);
+            if(numInputValue > maxDish) {
+                setNumInputValue(maxDish);
+
+            }
+        }
+        return maxDish;
+    }
+
     return (
         <>
             <div className='black-screen'>
@@ -62,21 +76,22 @@ const RegisterPopUp = (props) => {
                         </div>
                         <div className='input-container'>
                             מה תכיני?
-                            <textarea ref={typeRef} resize="none" rows="3" cols="50" className='form-textarea' placeholder='פרטי על המנה'></textarea>
-                        </div>
-                        <div className='number-container'>
-                            מספר המנות שתכיני:
-                            <div className='number-controls'>
-                                <img src={add}  className={numInputValue < props.availableCount ? 'number-controller' : 'number-controller gray'} onClick={() => { numInputValue < props.availableCount ? setNumInputValue(numInputValue + 1) : null }} />
-                                <input className='number-input' step="1" readOnly value={numInputValue} min="1" max="100" />
-                                <img onClick={() => { numInputValue > 1 ? setNumInputValue(numInputValue - 1) : null }} src={subtract} className={numInputValue > 1 ? 'number-controller' : 'number-controller gray'} />
-                            </div>
+                            <textarea ref={typeRef} resize="none" rows="2" cols="50" className='form-textarea' placeholder='פרטי על המנה'></textarea>
                         </div>
                         <div className='checkbox-container'>
                             כשר?
                             <input onChange={() => setIsKosher(!isKosher)} className='checkbox' type="checkbox" value="kosher" />
                         </div>
-                        <button type="submit" className='register-btn popup-btn'>הרשמה</button>
+                        <div className='number-container'>
+                            מספר המנות שתכיני:
+                            <div className='number-controls'>
+                                <img src={add} className={numInputValue < calcMaxDishes() ? 'number-controller' : 'number-controller gray'} onClick={() => { numInputValue < calcMaxDishes() ? setNumInputValue(numInputValue + 1) : null }} />
+                                <input className='number-input' step="1" readOnly value={numInputValue} min="1" max="100" />
+                                <img onClick={() => { numInputValue > 1 ? setNumInputValue(numInputValue - 1) : null }} src={subtract} className={numInputValue > 1 ? 'number-controller' : 'number-controller gray'} />
+                            </div>
+                        </div>
+                        <span className='warning-kosher'>{numInputValue < 1 && !isKosher ? "ניתן להכין רק מנות כשרות!" : null}</span>
+                        <button type="submit" className='register-btn popup-btn' disabled={numInputValue < 1}>הרשמה</button>
                     </form>
                     <div className={ isFormSubmited ? '' :
                      'hidden'}>

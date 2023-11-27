@@ -24,11 +24,6 @@ const MoreDetailsPopUp = (props) => {
                         <p>{props.meal.contact_name}</p>
                         <p>{props.meal.contact_phone}</p>
                     </div>
-
-                </span>
-                <span className='more-detail-container'>
-                    <h4>שם המאספת:</h4>
-                    <p>{props.meal.contact_name}</p>
                 </span>
                 <span className='more-detail-container'>
                     <h4>שם המנהלת:</h4>
@@ -42,6 +37,14 @@ const MoreDetailsPopUp = (props) => {
                         <p>טבעוניות: {props.meal.total_vegans}</p>
                         <p>צמחוניות: {props.meal.total_vegetarians}</p>
                     </div>
+                </span>
+                <span className='more-detail-container'>
+                    <h4>הערות גבי איסוף:</h4>
+                    {props.meal.collecting_additional_info ? <p>{props.meal.collecting_additional_info}</p> : <p>אין.</p>}
+                </span>
+                <span className='more-detail-container'>
+                    <h4>הערות כלליות:</h4>
+                    {props.meal.comments ? <p>{props.meal.comments}</p> : <p>אין.</p>}
                 </span>
                 <span className='more-detail-container'>
                     <h4>סטטוס:</h4>

@@ -23,38 +23,45 @@ const NewOrderForm = (props) => {
     const total_ref = useRef("");
     const total_kosher_ref = useRef("");
     const total_vegetarians_ref = useRef("");
+    const total_vegan_ref = useRef("");
     const comments_ref = useRef("");
     const collecting_additional_info_ref = useRef("");
 
     const formSubmit = async (e) => {
-        // e.preventDefault();
-        const url = 'https://8nkv5zptli.execute-api.eu-west-1.amazonaws.com/dev/orders/create';
-        const objNewOrder = {
-            "manager_name": String(manager_name_ref.current.value),
-            "order_name": String(order_name_ref.current.value),
-            "order_type": String(order_type_ref.current),
-            "contact_name": String(contact_name_ref.current.value),
-            "contact_phone": String(contact_phone_ref.current.value),
-            "collecting_date": String(collecting_date_ref.current.value),
-            "collecting_person_name": String(collecting_person_name_ref.current.value),
-            "collecting_location": String(collecting_location_ref.current.value),
-            "collecting_person_phone": String(collecting_person_phone_ref.current.value),
-            "total": Number(total_ref.current.value),
-            "total_kosher": Number(total_kosher_ref.current.value),
-            "total_vegetarians": Number(total_vegetarians_ref.current.value),
-            "comments": String(comments_ref.current.value),
-            "collecting_additional_info": String(collecting_additional_info_ref.current.value)
+        e.preventDefault();
+        try {
+            const url = 'https://8nkv5zptli.execute-api.eu-west-1.amazonaws.com/dev/orders/create';
+            const objNewOrder = {
+                "manager_name": String(manager_name_ref.current.value),
+                "order_name": String(order_name_ref.current.value),
+                "order_type": String(order_type_ref.current),
+                "contact_name": String(contact_name_ref.current.value),
+                "contact_phone": String(contact_phone_ref.current.value),
+                "collecting_date": String(collecting_date_ref.current.value),
+                "collecting_person_name": String(collecting_person_name_ref.current.value),
+                "collecting_location": String(collecting_location_ref.current.value),
+                "collecting_person_phone": String(collecting_person_phone_ref.current.value),
+                "total": Number(total_ref.current.value),
+                "total_kosher": Number(total_kosher_ref.current.value),
+                "total_vegetarians": Number(total_vegetarians_ref.current.value),
+                "total_vegans": Number(total_vegan_ref.current.value),
+                "comments": String(comments_ref.current.value),
+                "collecting_additional_info": String(collecting_additional_info_ref.current.value)
+            }
+            console.log('registrasion ', objNewOrder);
+
+            const response = await fetch(url, {
+                "method": "POST",
+                body: JSON.stringify(objNewOrder),
+            });
+            console.log('post completed');
+        } catch (err) {
+            console.log(err.message);
         }
-        console.log('registrasion ', objNewOrder);
-        const response = await fetch(url, {
-            "method": "POST",
-            body: JSON.stringify(objNewOrder),
-        });
-        console.log('post completed');
         props.HidePopUp();
         const result = await response.json()
         console.log(result);
-        location.reload();
+        // location.reload();
     }
 
     const clearForm = () => {
@@ -126,6 +133,10 @@ const NewOrderForm = (props) => {
                         <div className='order-numbers-container'>
                             מתוכן צמחוניות:
                             <input type='number' name='total_vegetarians' ref={total_vegetarians_ref}></input>
+                        </div>
+                        <div className='order-numbers-container'>
+                            מתוכן טבעוניות:
+                            <input type='number' name='total_vegan' ref={total_vegan_ref}></input>
                         </div>
                         <div className='order-inputs-container'>
                             הערות:
