@@ -20,7 +20,7 @@
     border-radius: 5px;
     margin: 1rem auto;
     padding: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     background-color: #fffeff;
     position: relative;
 }
@@ -55,7 +55,7 @@
 .order-details-container p {
     width: 50%;
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .dish-container {
@@ -106,7 +106,7 @@
 }
 
 .delete-popup p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 3rem 0 1rem 0;
 }
 

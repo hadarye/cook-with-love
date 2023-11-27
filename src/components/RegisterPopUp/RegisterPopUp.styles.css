@@ -45,7 +45,7 @@
 
 .form-textarea {
     width: 80%;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-family: assistant;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
@@ -55,7 +55,7 @@
     width: 80%;
     height: 2rem;
     font-family: assistant;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 0 0 2vh 0;
     border-radius: 5px;
     border: 1px solid rgb(0, 0, 0);
@@ -76,7 +76,7 @@ input::placeholder {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .pop-up-title {
@@ -88,9 +88,9 @@ input::placeholder {
 
 .number-input {
     font-family: assistant;
-    width: 2rem;
+    width: 1.5rem;
     height: 2.5rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
     text-align: center;
@@ -104,7 +104,7 @@ input::placeholder {
     text-align: right;
     width: 100%;
     display: flex;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     justify-content: space-between;
     align-items: flex-end;
     /* margin: 0 0 1rem 0; */
@@ -125,7 +125,7 @@ input::placeholder {
 }
 
 .checkbox-container {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     display: flex;
     flex-direction: row-reverse;
     width: 100%;
@@ -152,7 +152,7 @@ input::placeholder {
 }
 
 .confirmation-text {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 0 0 3vh 0;
 }
 

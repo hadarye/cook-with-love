@@ -50,7 +50,7 @@
 .new-order-form textarea
  {
     width: 80%;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-family: assistant;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
@@ -63,7 +63,7 @@
 }
 
 .new-order-form input[type=number] {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-family: assistant;
     width: 4rem;
     margin: 0 1rem;
@@ -78,7 +78,7 @@
 .order-inputs-container {
     width: 90%;
     text-align: right;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 1rem;
     display: flex;
     flex-direction: column;
@@ -87,6 +87,6 @@
 .order-numbers-container {
     width: 90%;
     text-align: right;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 1rem;
 }
