@@ -37,7 +37,7 @@ const OrderPage = (props) => {
 
     return (
         <div className='order-page'>
-            <FilterBar filterOrderArr={props.filterOrderArr} />
+            <FilterBar isManager={props.isManager} filterOrderArr={props.filterOrderArr} />
             <div className='title-container'>
                 <h1 className='title'>מבשלות אהבה</h1>
                 <h4 className='secondary-title'>בתל מונד</h4>
