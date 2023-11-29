@@ -2,6 +2,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import './App.css';
 import logo from '/cook-with-love-logo.JPG?url';
 import OrderPage from './components/OrderPage/OrderPage.component';
+import Blocked from './components/Blocked/Blocked.component';
 import { useState, useEffect } from "react";
 
 const App = () => {
@@ -23,6 +24,9 @@ const App = () => {
   }
 
   useEffect(() => {
+    if(screen.width >= 480) {
+      navigate("/blocked");
+    }
     getData();
   }, []);
 
@@ -50,6 +54,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<OrderPage getData={getData} filterOrderArr={filterOrderArr} OrderList={OrderList} isManager={false} />} />
         <Route path="/management" element={<OrderPage getData={getData} filterOrderArr={filterOrderArr} OrderList={OrderList} isManager={true} />}></Route>
+        <Route path="/blocked" element={<Blocked/>}></Route>
       </Routes>
       <button onClick={() => navigate('/management')}>management</button>
       <button onClick={() => navigate('/')}>home</button>
