@@ -48,29 +48,15 @@ const NewOrderForm = (props) => {
                 "comments": String(comments_ref.current.value),
                 "collecting_additional_info": String(collecting_additional_info_ref.current.value)
             }
-            console.log('registrasion ', objNewOrder);
-
             const response = await fetch(url, {
                 "method": "POST",
                 body: JSON.stringify(objNewOrder),
             });
-            console.log('post completed');
         } catch (err) {
             console.log(err.message);
         }
         props.HidePopUp();
         const result = await response.json()
-        console.log(result);
-        // location.reload();
-    }
-
-    const clearForm = () => {
-        nameRef.current.value = "";
-        phoneRef.current.value = "";
-        typeRef.current.value = "";
-        isKosherRef.current = false;
-        setNumInputValue(1);
-        props.HidePopUp();
     }
 
     return (

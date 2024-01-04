@@ -16,6 +16,7 @@ const OrderDetails = (props) => {
     const [chosenDish, setChosenDish] = useState({});
     const [isFilterDishes, setIsFilterDishes] = useState(true);
 
+    // fix date - to readable format
     let date = new Date(props.date);
     const dateRef = useRef(` ${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}`);
     const timeRef = useRef(`${date.getHours()}:${String(date.getMinutes()).padStart(2, "0")}`);
@@ -55,6 +56,7 @@ const OrderDetails = (props) => {
         setDishesArr(orderObj.dishes);
     }
 
+    // filtering happeens in backend and is the default
     async function getFilteredData() {
         let accumuletor = [];
         let orderObj = {};

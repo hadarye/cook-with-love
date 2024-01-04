@@ -39,7 +39,7 @@ const MoreDetailsPopUp = (props) => {
                     </div>
                 </span>
                 <span className='more-detail-container'>
-                    <h4>הערות גבי איסוף:</h4>
+                    <h4>הערות לגבי איסוף:</h4>
                     {props.meal.collecting_additional_info ? <p>{props.meal.collecting_additional_info}</p> : <p>אין.</p>}
                 </span>
                 <span className='more-detail-container'>

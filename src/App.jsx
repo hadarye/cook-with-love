@@ -56,8 +56,8 @@ const App = () => {
         <Route path="/management" element={<OrderPage getData={getData} filterOrderArr={filterOrderArr} OrderList={OrderList} isManager={true} />}></Route>
         <Route path="/blocked" element={<Blocked/>}></Route>
       </Routes>
-      <button onClick={() => navigate('/management')}>management</button>
-      <button onClick={() => navigate('/')}>home</button>
+      {/* <button onClick={() => navigate('/management')}>management</button>
+      <button onClick={() => navigate('/')}>home</button> */}
     </>
   )
 }
